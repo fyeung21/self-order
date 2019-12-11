@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router';
+import { Router, Route, Switch, Redirect } from 'react-router';
 import { createBrowserHistory } from 'history';
 
 // route components
@@ -19,6 +19,7 @@ export const renderRoutes = () => (
             <Route exact path="/my-order" component={MyOrder} />
             <Route exact path="/single-item" component={SingleItem} />
             <Route exact path="/single-item/:itemid" component={SingleItem} />
+            <Redirect from="*" to="/menu" />
         </Switch>
     </Router>
 );
