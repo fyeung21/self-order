@@ -1,24 +1,24 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 // route components
-import AppContainer from '../../ui/containers/AppContainer.js';
-import ListPageContainer from '../../ui/containers/ListPageContainer.js';
-import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.js';
-import AuthPageJoin from '../../ui/pages/AuthPageJoin.js';
-import NotFoundPage from '../../ui/pages/NotFoundPage.js';
+import Menu from '../pages/Menu';
+import Welcome from '../pages/Welcome';
+import MyOrder from '../pages/MyOrder';
+import SingleItem from '../pages/SingleItem';
 
 const browserHistory = createBrowserHistory();
 
 export const renderRoutes = () => (
     <Router history={browserHistory}>
         <Switch>
-            <Route exact path="/" component={AppContainer} />
-            <Route exact path="/lists/:id" component={ListPageContainer} />
-            <Route exact path="/signin" component={AuthPageSignIn} />
-            <Route exact path="/join" component={AuthPageJoin} />
-            <Route component={NotFoundPage} />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/menu" component={Menu} />
+            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/my-order" component={MyOrder} />
+            <Route exact path="/single-item" component={SingleItem} />
+            <Route exact path="/single-item/:itemid" component={SingleItem} />
         </Switch>
     </Router>
 );
