@@ -2,3 +2,32 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+/* My brand's colors: */
+/* red, golden, eggshell, white, ash, grey */
+/* To apply, in your component, use eg. className="ui my-red" */
+ui.my-red {
+  color: #ac131c;
+}
+ui.my-golden {
+  color: #F2D16B
+}
+ui.my-eggshell {
+  color: #e3d8cd;
+}
+ui.my-white {
+  color:#f7f7f7
+}
+ui.my-ash {
+  color: #7a7976;
+}
+ui.my-grey {
+  color: #3f3f41
+}
+
+/* BUTTONS */
+/* eg. className="ui my-red button" */
+ui.my-red.button {
+  background-color: #ac131c;
+  color: #f7f7f7;
+}
