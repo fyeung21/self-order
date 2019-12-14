@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
+import { Input } from "semantic-ui-react";
+import styles from "./styles";
 
 const Welcome = () => {
   const history = useHistory();
@@ -8,13 +10,23 @@ const Welcome = () => {
     history.push("../pages/Menu");
   };
   return (
-    <div>
+    <div className="body">
       <p>this is the welcome page found at /welcome</p>
-      <Button
-        content="Menu"
-        icon={{ color: "red", name: "utensils" }}
-        onClick={clickHandler}
-      />
+      <div>
+        <img />
+        <p className="title">Restaurant Name</p>
+      </div>
+      <div className="flex">
+        <div className="ui input">
+          <Input type="text" placeholder="Passcode" />
+        </div>
+        <Button
+          className="btn"
+          content="Enter"
+          icon={{ color: "red", name: "utensils" }}
+          onClick={clickHandler}
+        />
+      </div>
     </div>
   );
 };
