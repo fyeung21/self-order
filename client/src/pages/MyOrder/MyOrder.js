@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import OrderCard from "../../components/OrderCard.js";
+import OrderCard from "../../components/OrderCard";
 import tableNumber from "../../components/tableNumber";
 import styles from "./styles";
 

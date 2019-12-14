@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
 import styles from "./styles";
+import { Icon } from "semantic-ui-react";
 
 class OrderCard extends Component {
   render() {
@@ -23,7 +24,7 @@ class OrderCard extends Component {
           <Card.Content extra>
             <div className="ui two buttons">
               <Button basic color="red">
-                Decline
+                <Icon name="trash alternate outline" size="large" />
               </Button>
             </div>
           </Card.Content>
@@ -44,7 +45,7 @@ class OrderCard extends Component {
           <Card.Content extra>
             <div className="ui two buttons">
               <Button basic color="red">
-                Decline
+                <Icon name="trash alternate outline" size="large" />
               </Button>
             </div>
           </Card.Content>
