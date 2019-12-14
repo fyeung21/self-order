@@ -1,0 +1,65 @@
+[   
+    {
+        "name": "Shrimp Dumplings",
+        "price" : 7,
+        "pcs" : 4,
+        "description" : "Whole shrimp in a translucent wrapper.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
+        "featured" : false
+    },
+    {
+        "name": "Steamed Soup Dumplings",
+        "price" : 10,
+        "pcs" : 8,
+        "description" : "Dumplings filled with pork, crab meat and broth.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg",
+        "featured" : false
+    },
+    {
+        "name": "Pork Siu Mai",
+        "price" : 7,
+        "pcs" : 4,
+        "description" : "Open-topped dumplings filled with ground pork and shrimp.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-pork-siu-mai-thumb.jpg",
+        "featured" : false
+    }, 
+    {
+        "name": "Steamed Pork Ribs",
+        "price" : 7,
+        "pcs" : 4,
+        "description" : "Pork rib tips steamed with whole black beans and oil.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-ribs-thumb.jpg",
+        "featured" : false
+    },   
+    {
+        "name": "Steamed Chicken Feet",
+        "price" : 7,
+        "pcs" : 4,
+        "description" : "Chewy chicken feet that are fried, marinated and steamed.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-chicken-feet-thumb.jpg",
+        "featured" : false
+    },   
+    {
+        "name": "Sticky Rice in Lotus Leaf",
+        "price" : 7,
+        "pcs" : 1,
+        "description" : "Pork, chicken, sausage and mushrooms wrapped in a lotus leaf.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-sticky-rice-in-lotus-leaf-thumb.jpg",
+        "featured" : false
+    },     
+    {
+        "name": "Steamed Pork Buns",
+        "price" : 7,
+        "pcs" : 3,
+        "description" : "BBQ pork wrapped in sweet dough and steamed.",
+        "cataglory" : " Steamed",
+        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-buns-thumb.jpg",
+        "featured" : false
+    } 
+]
