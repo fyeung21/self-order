@@ -1,16 +1,10 @@
 body {
-  background: #555;
-}
-
-.menu {
-width: 40vw
+  background: white;
 }
 
 .content {
   max-width: 500px;
   margin: auto;
-  background: white;
-  padding: 10px;
 }
 
 /* My brand's colors: */

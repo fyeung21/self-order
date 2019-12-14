@@ -1,19 +1,17 @@
+import _ from 'lodash'
 import React, { Component } from 'react';
 import Item from './Item';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Image } from 'semantic-ui-react'
+import "./menuStyle.css"
 
 const menuItems = require('./menu.json');
-
 const MenuContainer = () => {
     return (
-    // <Grid doubling centered columns={8} verticalAlign>
-        <Grid centered>
-            <Grid.Row>
-            {menuItems.map(item => {
-                return <Item item={item}/>
-            })}
-            </Grid.Row>
-    </Grid>
+        <Grid doubling columns={4} padded>
+            {menuItems.map((item) => (
+            <Item item={item}/>
+            ))}
+         </Grid>
     )
 }
 export default MenuContainer;

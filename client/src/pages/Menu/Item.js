@@ -1,28 +1,19 @@
 import React from 'react';
 import { Grid, Image, Card } from 'semantic-ui-react'
+import "./menuStyle.css"
+
 
 const Item = ({item}) => {
         return (
-            <div>
-                <Grid.Column width={8}>
-                    <div className="menu">
-                    {/* <Image src={item.imgurl} fluid/> */}
-                        <Card fluid>
-                        <Image fluid src={item.imgurl} />
-                            <Card.Content>
-                            <Card.Header>{item.name}</Card.Header>
-                            <Card.Header>${item.price}</Card.Header>
-                            <Card.Meta>
-                                <span className='date'>{item.pcs}/pcs</span>
-                            </Card.Meta>
-                            <Card.Description>
-                                {item.description}
-                            </Card.Description>
-                            </Card.Content>
-                        </Card>
-                        </div>
-                </Grid.Column>
-             </div>
-        );
+            <Grid.Column item={item.name} key={item.name}>
+                <Card fuild>
+                     <Image fluid src={item.imgurl} />
+                     <Card.Content>
+                        <div class="title">{item.name}</div>
+                        <div class="price">${item.price} / <span class="pcs">{item.pcs}pcs</span></div>
+                     </Card.Content>
+                </Card>
+            </Grid.Column>
+        )
     }    
 export default Item;
