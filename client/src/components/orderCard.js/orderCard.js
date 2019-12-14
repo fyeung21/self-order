@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
 
-class orderCard extends Component {
+class OrderCard extends Component {
   render() {
     return (
       <Card.Group>
@@ -81,4 +81,4 @@ class orderCard extends Component {
     );
   }
 }
-export default orderCard;
+export default OrderCard;

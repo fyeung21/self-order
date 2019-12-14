@@ -11,10 +11,9 @@ const Welcome = () => {
   };
   return (
     <div className="body">
-      <p>this is the welcome page found at /welcome</p>
       <div>
         <img />
-        <p className="title">Restaurant Name</p>
+        <p className="title">Dim-Sum</p>
       </div>
       <div className="flex">
         <div className="ui input">
