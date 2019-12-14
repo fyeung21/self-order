@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard.js";
+import tableNumber from "../../components/tableNumber";
+import styles from "./styles";
 
 class MyOrder extends Component {
   render() {
     return (
       <div>
+        <tableNumber />
         <OrderCard />
-        <p>this is the My Order page found at /my-order</p>
+        <div className="total">
+          <div>Qty: 2</div>
+          <div>
+            <p>Subtotal: $20.00</p>
+            <p>tax: $0.80</p>
+            <p>Total: $20.80</p>
+          </div>
+        </div>
       </div>
     );
   }

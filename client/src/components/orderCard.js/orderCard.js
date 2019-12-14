@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
+import styles from "./styles";
 
 class OrderCard extends Component {
   render() {
@@ -12,17 +13,15 @@ class OrderCard extends Component {
               size="mini"
               src="/images/avatar/large/steve.jpg"
             />
-            <Card.Header>Steve Sanders</Card.Header>
-            <Card.Meta>Friends of Elliot</Card.Meta>
+            <Card.Header>Dim-Sum bbq</Card.Header>
+            <Card.Meta>3 pieces</Card.Meta>
             <Card.Description>
-              Steve wants to add you to the group <strong>best friends</strong>
+              Beef Balls. Seasoned ground or minced beef, placed on bean curd
+              skins and steamed
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <div className="ui two buttons">
-              <Button basic color="green">
-                Approve
-              </Button>
               <Button basic color="red">
                 Decline
               </Button>
@@ -36,41 +35,14 @@ class OrderCard extends Component {
               size="mini"
               src="/images/avatar/large/molly.png"
             />
-            <Card.Header>Molly Thomas</Card.Header>
-            <Card.Meta>New User</Card.Meta>
+            <Card.Header>Egg Custard</Card.Header>
+            <Card.Meta>4 pieces</Card.Meta>
             <Card.Description>
-              Molly wants to add you to the group <strong>musicians</strong>
+              A steamed custard that may include meat or seafood.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <div className="ui two buttons">
-              <Button basic color="green">
-                Approve
-              </Button>
-              <Button basic color="red">
-                Decline
-              </Button>
-            </div>
-          </Card.Content>
-        </Card>
-        <Card>
-          <Card.Content>
-            <Image
-              floated="right"
-              size="mini"
-              src="/images/avatar/large/jenny.jpg"
-            />
-            <Card.Header>Jenny Lawrence</Card.Header>
-            <Card.Meta>New User</Card.Meta>
-            <Card.Description>
-              Jenny requested permission to view your contact details
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className="ui two buttons">
-              <Button basic color="green">
-                Approve
-              </Button>
               <Button basic color="red">
                 Decline
               </Button>

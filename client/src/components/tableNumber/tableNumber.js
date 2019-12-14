@@ -4,9 +4,7 @@ class tableNumber extends Component {
   render() {
     return (
       <div>
-        <div>
-          <p>{"Table Number: 00012"}</p>
-        </div>
+        <p>Table Number: 00012</p>
       </div>
     );
   }
