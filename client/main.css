@@ -1,6 +1,16 @@
 body {
+  background: #555;
+}
+
+.menu {
+width: 40vw
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
+  background: white;
   padding: 10px;
-  font-family: sans-serif;
 }
 
 /* My brand's colors: */
