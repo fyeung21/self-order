@@ -1,0 +1,17 @@
+/* This is styling for the navBar */
+
+.ui.fluid.three.item.menu {
+  background-color: #ac131c;
+}
+.ui.fluid.three.item.menu span {
+  color: white;
+}
+.big.icon {
+  color: white;
+  margin: 0 auto 5px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+}
