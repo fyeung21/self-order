@@ -1,21 +1,32 @@
 import React from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
+import { useHistory } from "react-router-dom";
 import "./NavStyle";
 
 
 const NavBar = () => {
+    const history = useHistory()
+    const clickHandler = () => {
+        history.push('/Menu')
+    }
+    const clickHandler2 = () => {
+        alert("A server will be here shortly.")
+    }
+    const clickHandler3 = () => {
+        history.push('/my-order')
+    }
     state = {}
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     const { activeItem } = this.state
 
     return (
         <Menu fluid widths={3}>
 
+            {/* Menu */}
             <Menu.Item
                 name='Menu'
                 active={activeItem === 'menu'}
-                onClick={this.handleItemClick}
+                onClick={clickHandler}
             >
                 <div className="navContainer">
                     <Icon name='food' size='big' />
@@ -23,10 +34,11 @@ const NavBar = () => {
                 </div>
             </Menu.Item>
 
+            {/* Service */}
             <Menu.Item
                 name='Service'
                 active={activeItem === 'service'}
-                onClick={this.handleItemClick}
+                onClick={clickHandler2}
             >
                 <div className="navContainer">
                     <Icon name='bell outline' size='big' />
@@ -34,10 +46,11 @@ const NavBar = () => {
                 </div>
             </Menu.Item>
 
+            {/* My Order */}
             <Menu.Item
                 name='My Order'
                 active={activeItem === 'my-order'}
-                onClick={this.handleItemClick}
+                onClick={clickHandler3}
             >
                 <div className="navContainer">
                     <Icon name='edit outline' size='big' />
