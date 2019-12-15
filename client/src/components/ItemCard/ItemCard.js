@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Grid, Image, Card, Modal } from 'semantic-ui-react'
+import ItemOrderForm from '../ItemOrderForm/index'
+import "./itemStyle.css"
 
-class ItemCard extends Component {
-    render() {
-        return (
-            <div>
-                <div>
-                    <p>{"Image here"}</p>
-                </div>
-                <div>
-                    <div>
-                        <p>{"Name of Item"}</p>
-                    </div>
 
-                    <div>
-                        <p>$ {"Price of Item"} / {"3"} pcs</p>
-                    </div>
-                </div>
-            </div>
-        );
+const Item = ({item}) => {
+    const handleOpenItemOrderForm = () => {
+        console.log('open')
     }
-}
-export default ItemCard;
+        return (
+            <Modal dimmer='blurring' trigger={
+                <Grid.Column item={item.name}>
+                     <Card 
+                     onClick={handleOpenItemOrderForm}>
+                        <Image src={item.imgurl} />
+                        <Card.Content>
+                            <div className="title">{item.name}</div>
+                            <div className="price">${item.price} / <span className="pcs">{item.pcs}pcs</span></div>
+                        </Card.Content>
+                    </Card>
+                </Grid.Column>
+                }>
+                <ItemOrderForm item={item}/>
+             </Modal>
+        )
+    }    
+export default Item;

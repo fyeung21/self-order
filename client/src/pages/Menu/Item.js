@@ -5,12 +5,12 @@ import "./menuStyle.css"
 
 const Item = ({item}) => {
         return (
-            <Grid.Column item={item.name} key={item.name}>
-                <Card fuild>
-                     <Image fluid src={item.imgurl} />
+            <Grid.Column item={item.name}>
+                <Card className="test">
+                     <Image src={item.imgurl} />
                      <Card.Content>
-                        <div class="title">{item.name}</div>
-                        <div class="price">${item.price} / <span class="pcs">{item.pcs}pcs</span></div>
+                        <div className="title">{item.name}</div>
+                        <div className="price">${item.price} / <span className="pcs">{item.pcs}pcs</span></div>
                      </Card.Content>
                 </Card>
             </Grid.Column>

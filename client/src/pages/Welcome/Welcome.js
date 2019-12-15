@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react'
 import { useHistory } from "react-router-dom";
 
-
-
 const Welcome = () => {
     const history = useHistory()
     const clickHandler = () => {
@@ -11,7 +9,8 @@ const Welcome = () => {
     }
     return (
         <div>
-            <p>this is the welcome page found at /welcome</p>
+            <p className="my-golden p">this is the welcome page found at /welcome</p>
+            <Button className="my-red-button">hello</Button>
             <Button 
             content="Menu" 
             icon={{ color: 'red', name: 'utensils' }} 
