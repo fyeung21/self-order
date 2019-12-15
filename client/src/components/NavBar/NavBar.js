@@ -4,19 +4,18 @@ import "./NavStyle";
 
 
 const NavBar = () => {
-    // state = {}
-    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    state = {}
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-    // render() {
-    //     const { activeItem } = this.state
+    const { activeItem } = this.state
 
     return (
         <Menu fluid widths={3}>
 
             <Menu.Item
                 name='Menu'
-            // active={activeItem === 'buy'}
-            // onClick={this.handleItemClick}
+                active={activeItem === 'buy'}
+                onClick={this.handleItemClick}
             >
                 <div className="menu-container">
                     <Icon name='food' size='big' />
@@ -26,8 +25,8 @@ const NavBar = () => {
 
             <Menu.Item
                 name='Service'
-            // active={activeItem === 'sell'}
-            // onClick={this.handleItemClick}
+                active={activeItem === 'sell'}
+                onClick={this.handleItemClick}
             >
                 <div className="menu-container">
                     <Icon name='bell outline' size='big' />
@@ -37,8 +36,8 @@ const NavBar = () => {
 
             <Menu.Item
                 name='My Order'
-            // active={activeItem === 'rent'}
-            // onClick={this.handleItemClick}
+                active={activeItem === 'rent'}
+                onClick={this.handleItemClick}
             >
                 <div className="menu-container">
                     <Icon name='edit outline' size='big' />
@@ -48,6 +47,5 @@ const NavBar = () => {
 
         </Menu >
     )
-    // }
 }
 export default NavBar;
