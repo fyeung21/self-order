@@ -12,7 +12,7 @@ const Welcome = () => {
   return (
     <div className="body">
       <div>
-        <img />
+        <img url="https://images.app.goo.gl/JLnbPi1TDmBJVUCX6" />
         <p className="title">Dim-Sum</p>
       </div>
       <div className="flex">
