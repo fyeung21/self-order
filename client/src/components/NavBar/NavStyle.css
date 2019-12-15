@@ -11,7 +11,7 @@
   margin: 0 auto 5px;
 }
 
-.menu-container {
+.navContainer {
   display: flex;
   flex-direction: column;
 }

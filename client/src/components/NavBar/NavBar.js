@@ -14,10 +14,10 @@ const NavBar = () => {
 
             <Menu.Item
                 name='Menu'
-                active={activeItem === 'buy'}
+                active={activeItem === 'menu'}
                 onClick={this.handleItemClick}
             >
-                <div className="menu-container">
+                <div className="navContainer">
                     <Icon name='food' size='big' />
                     <span>Menu</span>
                 </div>
@@ -25,10 +25,10 @@ const NavBar = () => {
 
             <Menu.Item
                 name='Service'
-                active={activeItem === 'sell'}
+                active={activeItem === 'service'}
                 onClick={this.handleItemClick}
             >
-                <div className="menu-container">
+                <div className="navContainer">
                     <Icon name='bell outline' size='big' />
                     <span>Service</span>
                 </div>
@@ -36,10 +36,10 @@ const NavBar = () => {
 
             <Menu.Item
                 name='My Order'
-                active={activeItem === 'rent'}
+                active={activeItem === 'my-order'}
                 onClick={this.handleItemClick}
             >
-                <div className="menu-container">
+                <div className="navContainer">
                     <Icon name='edit outline' size='big' />
                     <span>My Order</span>
                 </div>
