@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import MyOrder from './MyOrder';
+import React, { Component } from "react";
+import MyOrder from "./MyOrder";
 
 class MyOrderContainer extends Component {
-    render() {
-        return <MyOrder />;
-    }
+  render() {
+    return <MyOrder />;
+  }
 }
 export default MyOrderContainer;

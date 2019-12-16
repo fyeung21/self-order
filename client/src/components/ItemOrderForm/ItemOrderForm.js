@@ -1,3 +1,4 @@
+
 import React, {Fragment, useState} from 'react';
 import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
 import "./itemOrderStyle.css"
@@ -10,9 +11,10 @@ const [visible, setVisible] = useState(true)
     let counter = qty
     counter++
     setQty(counter)
-    }
+  }
   const handleMinusQty = () => {
     let counter = qty
+    
     if(counter > 0) {
         counter--
         setQty(counter)
@@ -31,18 +33,18 @@ const [visible, setVisible] = useState(true)
           src={item.imgurl}
         />
         <Modal.Description>
-        <Header><h2>{item.name}</h2></Header>
-        <p>
-          {item.description}
-        </p>
-        <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
+          <Header><h2>{item.name}</h2></Header>
+          <p>
+            {item.description}
+          </p>
+          <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
           <div className="qty">
             <div>
-            <Button circular icon='minus' onClick={handleMinusQty}/>
+              <Button circular icon='minus' onClick={handleMinusQty} />
             </div>
             <h2 className="qtyNum">{qty}</h2>
             <div>
-            <Button circular icon='plus' onClick={handlePlusQty}/>
+              <Button circular icon='plus' onClick={handlePlusQty} />
             </div>
           </div>
         </Modal.Description>
@@ -59,7 +61,7 @@ const [visible, setVisible] = useState(true)
           onClick={this.close}
         />
       </Modal.Actions>
-      </Fragment>
-    )
-    }    
+    </Fragment>
+  )
+}
 export default ItemOrderForm;
