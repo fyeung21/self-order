@@ -1,37 +1,43 @@
 body {
   background: white;
+  
 }
-
+/* set globel font */
 .content {
-  max-width: 500px;
+  /* max-width: 500px; */
   margin: auto;
+  color: #3f3f41
 }
 
 /* My brand's colors: */
 /* red, golden, eggshell, white, ash, grey */
 /* To apply, in your component, use eg. className="ui my-red" */
-ui.my-red {
+.ui.my-red {
   color: #ac131c;
 }
-ui.my-golden {
+.ui.my-golden {
   color: #F2D16B
 }
-ui.my-eggshell {
+.ui.my-eggshell {
   color: #e3d8cd;
 }
-ui.my-white {
+.ui.my-white {
   color:#f7f7f7
 }
-ui.my-ash {
+.ui.my-ash {
   color: #7a7976;
 }
-ui.my-grey {
+.ui.my-grey {
   color: #3f3f41
 }
 
-/* BUTTONS */
-/* eg. className="ui my-red button" */
-ui.my-red.button {
+/* for ui BUTTONS */
+/* eg. className="my-red-button" */
+.ui.button.my-red-button {
   background-color: #ac131c;
   color: #f7f7f7;
+}
+
+.p {
+  font-size: 20pt
 }
