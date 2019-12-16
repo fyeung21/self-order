@@ -1,8 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 import Item from '../../components/ItemCard/';
-import { Grid } from 'semantic-ui-react'
-import "./menuStyle.css"
+import { Grid } from 'semantic-ui-react';
 import NavBar from '../../components/NavBar/NavBar';
 
 const menuItems = require('./menu.json');
@@ -11,7 +10,7 @@ const MenuContainer = () => {
         <div>
             <Grid doubling columns={4} padded>
                 {menuItems.map((item) => (
-                    <Item item={item} key={item.name}/>
+                    <Item item={item} key={item.name} />
                 ))}
             </Grid>
             <NavBar />

@@ -1,24 +1,24 @@
-import React, {Fragment, useState} from 'react';
-import { Button, Header, Image, Modal} from 'semantic-ui-react'
-import "./itemOrderStyle.css"
+import React, { Fragment, useState } from 'react';
+import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import "./itemOrderStyle.css";
 
-const ItemOrderForm = ({item}) => {
-const [qty, setQty] = useState(0)
+const ItemOrderForm = ({ item }) => {
+  const [qty, setQty] = useState(0)
 
   const handlePlusQty = () => {
     let counter = qty
     counter++
     setQty(counter)
-    }
+  }
   const handleMinusQty = () => {
     let counter = qty
-    if(counter > 0) {
-        counter--
-        setQty(counter)
-      }
-    }  
-    return (
-      <Fragment>
+    if (counter > 0) {
+      counter--
+      setQty(counter)
+    }
+  }
+  return (
+    <Fragment>
       <Modal.Header>Add to order</Modal.Header>
       <Modal.Content image>
         <Image
@@ -27,18 +27,18 @@ const [qty, setQty] = useState(0)
           src={item.imgurl}
         />
         <Modal.Description>
-        <Header><h2>{item.name}</h2></Header>
-        <p>
-          {item.description}
-        </p>
-        <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
+          <Header><h2>{item.name}</h2></Header>
+          <p>
+            {item.description}
+          </p>
+          <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
           <div className="qty">
             <div>
-            <Button circular icon='minus' onClick={handleMinusQty}/>
+              <Button circular icon='minus' onClick={handleMinusQty} />
             </div>
             <h2 className="qtyNum">{qty}</h2>
             <div>
-            <Button circular icon='plus' onClick={handlePlusQty}/>
+              <Button circular icon='plus' onClick={handlePlusQty} />
             </div>
           </div>
         </Modal.Description>
@@ -55,7 +55,7 @@ const [qty, setQty] = useState(0)
           onClick={this.close}
         />
       </Modal.Actions>
-      </Fragment>
-    )
-    }    
+    </Fragment>
+  )
+}
 export default ItemOrderForm;
