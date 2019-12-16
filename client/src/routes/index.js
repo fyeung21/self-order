@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 import Menu from '../pages/Menu';
 import Welcome from '../pages/Welcome';
 import MyOrder from '../pages/MyOrder';
+import Kitchen from '../pages/Kitchen';
 
 const browserHistory = createBrowserHistory();
 
@@ -16,6 +17,7 @@ export const renderRoutes = () => (
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/my-order" component={MyOrder} />
+            <Route exact path="/kitchen" component={Kitchen} />
             <Redirect from="*" to="/menu" />
         </Switch>
     </Router>
