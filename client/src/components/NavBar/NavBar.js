@@ -20,8 +20,8 @@ const NavBar = () => {
     const { activeItem } = this.state
 
     return (
-        // <Menu fluid widths={3}>
-        <Menu fixed="bottom" widths={3}>
+        <Menu fluid fixed="bottom" widths={3}>
+
 
             {/* Menu */}
             <Menu.Item
