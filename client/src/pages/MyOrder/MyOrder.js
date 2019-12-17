@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard";
 import TableNumber from "../../components/TableNumber";
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from "semantic-ui-react";
 import "./styles.css";
+import NavBar from "../../components/NavBar/NavBar";
 
 class MyOrder extends Component {
   render() {
@@ -22,6 +31,7 @@ class MyOrder extends Component {
           <Button>Send To Kitchen</Button>
           <Button>Get My Bill</Button>
         </div>
+        <NavBar />
       </div>
     );
   }
