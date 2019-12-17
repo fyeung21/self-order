@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard";
 import tableNumber from "../../components/tableNumber";
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import styles from "./styles";
 
 class MyOrder extends Component {
