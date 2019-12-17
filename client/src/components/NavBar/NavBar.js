@@ -22,6 +22,7 @@ const NavBar = () => {
     return (
         <Menu fluid fixed="bottom" widths={3}>
 
+
             {/* Menu */}
             <Menu.Item
                 name='Menu'

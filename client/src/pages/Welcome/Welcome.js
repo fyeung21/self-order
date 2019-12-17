@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
-import { Input } from "semantic-ui-react";
-import styles from "./styles";
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+// import styles from "./styles";
 
 const Welcome = () => {
   const history = useHistory();
@@ -10,23 +9,24 @@ const Welcome = () => {
     history.push("../pages/Menu");
   };
   return (
-    <div className="body">
-      <div>
-        <img />
-        <p className="title">Dim-Sum</p>
-      </div>
-      <div className="flex">
-        <div className="ui input">
-          <Input type="text" placeholder="Passcode" />
-        </div>
-        <Button
-          className="btn"
-          content="Enter"
-          icon={{ color: "red", name: "utensils" }}
-          onClick={clickHandler}
-        />
-      </div>
-    </div>
+    <Grid textAlign='center' style={{ height: '90vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='red' textAlign='center'>
+        Dim Sum Ordering System
+      </Header>
+      <Form size='large'>
+        <Segment>
+          <Form.Input fluid icon='utensils' iconPosition='left' placeholder='PASSCODE' />
+          <Button color='red' fluid size='large' onClick={clickHandler}>
+            GO TO MENU
+          </Button>
+        </Segment>
+      </Form>
+      {/* <Message>
+        New to us? <a href='#'>Sign Up</a>
+      </Message> */}
+    </Grid.Column>
+  </Grid>
   );
 };
 export default Welcome;

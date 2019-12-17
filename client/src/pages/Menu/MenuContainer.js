@@ -5,6 +5,7 @@ import { Grid } from 'semantic-ui-react';
 import NavBar from '../../components/NavBar/NavBar';
 
 const menuItems = require('./menu.json');
+
 const MenuContainer = () => {
     return (
         <div>

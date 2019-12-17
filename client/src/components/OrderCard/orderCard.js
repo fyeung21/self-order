@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Button, Card, Image } from "semantic-ui-react";
 import styles from "./styles";
-import { Icon } from "semantic-ui-react";
+import { Button, Icon, Card, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class OrderCard extends Component {
   render() {

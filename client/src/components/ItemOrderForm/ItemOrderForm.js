@@ -1,9 +1,11 @@
-import React, { Fragment, useState } from 'react';
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
-import "./itemOrderStyle.css";
 
-const ItemOrderForm = ({ item }) => {
-  const [qty, setQty] = useState(0)
+import React, {Fragment, useState} from 'react';
+import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
+import "./itemOrderStyle.css"
+
+const ItemOrderForm = ({item}) => {
+const [qty, setQty] = useState(0)
+const [visible, setVisible] = useState(true)
 
   const handlePlusQty = () => {
     let counter = qty
@@ -12,13 +14,17 @@ const ItemOrderForm = ({ item }) => {
   }
   const handleMinusQty = () => {
     let counter = qty
-    if (counter > 0) {
-      counter--
-      setQty(counter)
+    
+    if(counter > 0) {
+        counter--
+        setQty(counter)
+      }
     }
+  const handleClose = () => {
+    setVisible(false)
   }
-  return (
-    <Fragment>
+    return (
+      <Fragment>
       <Modal.Header>Add to order</Modal.Header>
       <Modal.Content image>
         <Image
@@ -44,7 +50,7 @@ const ItemOrderForm = ({ item }) => {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='black' onClick={this.close}>
+        <Button color='black' onClick={handleClose}>
           Close
         </Button>
         <Button
