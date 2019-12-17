@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import "./styles.css";
 
 TableNumber = () => {
-  return <p>Table Number: 00012</p>;
+  return <p className="number">Table Number: 00012</p>;
 };
 export default TableNumber;
