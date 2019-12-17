@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard";
 import TableNumber from "../../components/TableNumber";
-import styles from "./styles";
-import { Button } from "semantic-ui-react";
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import "./styles.css";
 
 class MyOrder extends Component {
   render() {

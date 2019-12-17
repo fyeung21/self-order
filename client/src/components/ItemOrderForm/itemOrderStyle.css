@@ -1,0 +1,19 @@
+.title {
+  margin: 0;
+}
+
+.pcs {
+  font-size: 14px;
+}
+
+.qty {
+  display: flex;
+  flex-direction:row;
+}
+
+.qtyNum {
+  margin-top: 3px;
+  margin-left: 6px;
+  margin-right: 6px;
+
+}
