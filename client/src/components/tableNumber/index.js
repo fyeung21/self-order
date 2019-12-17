@@ -1,3 +1,3 @@
-import tableNumber from "./tableNumber";
+import TableNumber from "./TableNumber";
 
-export default tableNumber;
+export default TableNumber;

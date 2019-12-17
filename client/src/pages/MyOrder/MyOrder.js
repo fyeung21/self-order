@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard";
-import tableNumber from "../../components/tableNumber";
+import TableNumber from "../../components/TableNumber";
 import styles from "./styles";
 import { Button } from "semantic-ui-react";
 
@@ -8,7 +8,7 @@ class MyOrder extends Component {
   render() {
     return (
       <div>
-        <tableNumber />
+        <TableNumber />
         <OrderCard />
         <div className="total">
           <div>Qty: 2</div>

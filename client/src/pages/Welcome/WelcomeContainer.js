@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Welcome from "./Welcome";
-import tableNumber from "../../components/tableNumber";
+import tableNumber from "../../components/TableNumber";
 
 class WelcomeContainer extends Component {
   render() {
