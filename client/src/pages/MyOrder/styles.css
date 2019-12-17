@@ -4,3 +4,10 @@
   justify-content: space-around;
   margin-top: 40px;
 }
+
+.btns {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 20px;
+}

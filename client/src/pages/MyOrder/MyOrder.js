@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import OrderCard from "../../components/OrderCard";
-import tableNumber from "../../components/tableNumber";
+import TableNumber from "../../components/TableNumber";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import styles from "./styles";
+import "./styles.css";
 
 class MyOrder extends Component {
   render() {
     return (
       <div>
-        <tableNumber />
+        <TableNumber />
         <OrderCard />
         <div className="total">
           <div>Qty: 2</div>
@@ -17,6 +17,10 @@ class MyOrder extends Component {
             <p>tax: $0.80</p>
             <p>Total: $20.80</p>
           </div>
+        </div>
+        <div className="btns">
+          <Button>Send To Kitchen</Button>
+          <Button>Get My Bill</Button>
         </div>
       </div>
     );
