@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Image, Card, Modal, Button } from 'semantic-ui-react';
-import "./kitCardStyle.css";
+import "./../kitchenStyles.css";
 
-const KitchenCard = ({ item }) => {
+const KitOrderCard = ({ item }) => {
 
     return (
         <div>
@@ -27,4 +27,4 @@ const KitchenCard = ({ item }) => {
         </div>
     )
 }
-export default KitchenCard;
+export default KitOrderCard;
