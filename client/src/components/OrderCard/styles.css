@@ -4,6 +4,18 @@
 .ui.card {
   margin-top: 30px;
 }
-.img {
+
+.content1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.image-card {
+  width: 60px;
   width: 25%;
+  margin-left: 0;
+}
+.card1 {
+  height: 90px;
 }
