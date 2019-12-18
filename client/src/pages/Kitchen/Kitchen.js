@@ -13,13 +13,17 @@ const Kitchen = () => {
 
     return (
         <div className="kitchenBackground">
-            <Grid>
+            <h1>{today}</h1>
+            <p>This is what the kitchen would see.</p>
+            <Grid columns={3}>
                 <Grid.Column>
-                    <p>This is what the kitchen would see.</p>
-                    <h1>{today}</h1>
-                    <div>
-                        <KitchenOrder />
-                    </div>
+                    <KitchenOrder />
+                </Grid.Column>
+                <Grid.Column>
+                    <KitchenOrder />
+                </Grid.Column>
+                <Grid.Column>
+                    <KitchenOrder />
                 </Grid.Column>
             </Grid>
         </div>
