@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
