@@ -29,7 +29,9 @@ const OrderCard = () => {
               <Card.Meta>3 pcs</Card.Meta>
             </Card.Header>
             <div>
-              <Icon name="trash alternate outline" size="large" color="red" />
+              <Button icon="trash alternate outline" size="large" color="red">
+                {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
+              </Button>
             </div>
           </div>
         </Card.Content>

@@ -13,3 +13,6 @@
   max-width: 150px;
   margin: 0 auto;
 }
+.ui.button.btn {
+  margin-bottom: 10px;
+}

@@ -28,8 +28,8 @@ class MyOrder extends Component {
           </div>
         </div>
         <div className="btns">
-          <Button>Send To Kitchen</Button>
-          <Button>Get My Bill</Button>
+          <Button className="btn">Send To Kitchen</Button>
+          <Button className="btn">Get My Bill</Button>
         </div>
         <NavBar />
       </div>
