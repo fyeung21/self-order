@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.ui.card.kitCard {
+  display: block;
+  margin: 0 auto;
+}
+.ui.button.doneBtn {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
