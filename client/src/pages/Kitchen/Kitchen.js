@@ -13,7 +13,7 @@ const Kitchen = () => {
             <h1>{"01/23/2020"}</h1>
             <div>
                 <h3>{"time created 14:20"}</h3>
-                <tableNumber />
+                <TableNumber />
                 <div>
                     <KitchenCard />
                     <KitchenCard />
