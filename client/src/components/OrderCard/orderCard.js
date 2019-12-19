@@ -1,51 +1,118 @@
-import React, { Component } from "react";
-import { Button, Icon, Card, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import React, { Component, Fragment, useState } from "react";
+import {
+  Button,
+  Icon,
+  Card,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from "semantic-ui-react";
 import "./styles.css";
 
-const OrderCard = () => {
+const OrderCard = ({ item }) => {
+  const [qty, setQty] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handlePlusQty = () => {
+    let counter = qty;
+    counter++;
+    setQty(counter);
+  };
+  const handleMinusQty = () => {
+    let counter = qty;
+
+    if (counter > 0) {
+      counter--;
+      setQty(counter);
+    }
+  };
+
+  // const OrderCard = () => {
   return (
     <Card.Group>
-      <Card>
+      <Card className="card1">
         <Card.Content>
-          <Image
-            floated="right"
-            size="mini"
-            src="http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg"
-          />
-          <Card.Header>Dim-Sum bbq</Card.Header>
-          <Card.Meta>3 pieces</Card.Meta>
-          <Card.Description>
-            Beef Balls. Seasoned ground or minced beef, placed on bean curd
-            skins and steamed
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="red">
-              <Icon name="trash alternate outline" size="large" />
-            </Button>
+          <div className="content1">
+            <Image
+              className="image-card"
+              // floated="right"
+              // size="small"
+              src={item.imgurl}
+            />
+            <Card.Header>
+              {item.name}
+              <Card.Header>3 pcs</Card.Header>
+              <Card.Meta>Qty:{qty}</Card.Meta>
+              <div className="qty2">
+                <div>
+                  <Button
+                    circular
+                    icon="minus"
+                    onClick={handleMinusQty}
+                    className="add-btn"
+                  />
+                </div>
+                <h2 className="qtyNum1">{qty}</h2>
+                <div>
+                  <Button
+                    circular
+                    icon="plus"
+                    onClick={handlePlusQty}
+                    className="add-btn"
+                  />
+                </div>
+              </div>
+            </Card.Header>
+            <div>
+              <Button
+                basic
+                icon="trash alternate outline"
+                size="large"
+                color="red"
+              >
+                {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
+              </Button>
+            </div>
           </div>
         </Card.Content>
       </Card>
-      <Card>
+      <Card className="card1">
         <Card.Content>
-          <Image
-            className="img"
-            floated="right"
-            size="mini"
-            src="http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg"
-          />
-          <Card.Header>Egg Custard</Card.Header>
-          <Card.Meta>4 pieces</Card.Meta>
-          <Card.Description>
-            A steamed custard that may include meat or seafood.
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="red">
-              <Icon name="trash alternate outline" size="large" />
-            </Button>
+          <div className="content1">
+            <Image
+              className="image-card"
+              src="http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg"
+            />
+            <Card.Header>
+              Egg Custard
+              <Card.Meta>3 pcs</Card.Meta>
+              <Card.Meta>Qty:{qty}</Card.Meta>
+              <div className="qty2">
+                <div>
+                  <Button
+                    circular
+                    icon="minus"
+                    onClick={handleMinusQty}
+                    className="add-btn"
+                  />
+                </div>
+                <h2 className="qtyNum1">{qty}</h2>
+                <div>
+                  <Button
+                    circular
+                    icon="plus"
+                    onClick={handlePlusQty}
+                    className="add-btn"
+                  />
+                </div>
+              </div>
+            </Card.Header>
+            <div>
+              <Icon name="trash alternate outline" size="large" color="red" />
+            </div>
           </div>
         </Card.Content>
       </Card>

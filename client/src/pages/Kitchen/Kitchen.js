@@ -1,12 +1,13 @@
-import React from 'react';
-import KitchenCard from './../../components/KitchenCard';
-import { Button } from 'semantic-ui-react';
+import React from "react";
+import KitchenCard from "./../../components/KitchenCard";
+import { Button } from "semantic-ui-react";
 import "./styles";
 import TableNumber from '../../components/TableNumber';
 
-const Kitchen = () => {
-    // const date = new Date();
 
+const Kitchen = () => {
+  // const date = new Date();
+  
     return (
         <div className="kitchenBackground">
             <p>This is what the kitchen would see.</p>
@@ -23,6 +24,12 @@ const Kitchen = () => {
                 <Button basic color="blue">Done</Button>
             </div>
         </div>
-    )
-}
+        <h3>{"time done 14:40 (will show time when 'done' is pressed)"}</h3>
+        <Button basic color="blue">
+          Done
+        </Button>
+      </div>
+    </div>
+  );
+};
 export default Kitchen;
