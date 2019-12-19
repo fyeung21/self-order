@@ -1,13 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-// import styles from "./styles";
+import { Meteor } from 'meteor/meteor';
+
 
 const Welcome = () => {
+  const [tableNumber, setTableNumner] = useState('')
   const history = useHistory();
+
   const clickHandler = () => {
-    history.push("../pages/Menu");
+    console.log(tableNumber)
+    // history.push("../pages/Menu")
   };
+
+  const handleChange = (e , {value} ) => {
+    // console.log(value)
+    setTableNumner(value)
+    // console.log(tableNumber)
+  }
+
   return (
     <Grid textAlign='center' style={{ height: '90vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
@@ -16,7 +27,12 @@ const Welcome = () => {
       </Header>
       <Form size='large'>
         <Segment>
-          <Form.Input fluid icon='utensils' iconPosition='left' placeholder='PASSCODE' />
+          <Form.Input 
+          onChange={handleChange}
+          value={tableNumber}
+          fluid icon='utensils' 
+          iconPosition='left' 
+          placeholder='PASSCODE' />
           <Button color='red' fluid size='large' onClick={clickHandler}>
             GO TO MENU
           </Button>

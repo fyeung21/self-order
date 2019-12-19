@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data'
 import { withTracker } from 'meteor/react-meteor-data';
 import Item from '../../components/ItemCard/';
+import TableNumber from '../../components/TableNumber/';
 import { Grid, Button } from 'semantic-ui-react';
 import NavBar from '../../components/NavBar/NavBar';
 import { Menu } from '/imports/api/collections/menu';
@@ -27,7 +28,7 @@ const MenuContainer = ({menu, ...props}) => {
 
     return (
         <div>
-            <Button onClick={addItem}>add an item</Button>
+            <TableNumber />
             <Grid doubling columns={4} padded>
                 {menu.map((item) => (
                     <Item item={item} key={item.name} />
