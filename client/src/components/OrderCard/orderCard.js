@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment, useState } from "react";
 import {
   Button,
   Icon,
@@ -12,7 +12,25 @@ import {
 } from "semantic-ui-react";
 import "./styles.css";
 
-const OrderCard = () => {
+const OrderCard = ({ item }) => {
+  const [qty, setQty] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handlePlusQty = () => {
+    let counter = qty;
+    counter++;
+    setQty(counter);
+  };
+  const handleMinusQty = () => {
+    let counter = qty;
+
+    if (counter > 0) {
+      counter--;
+      setQty(counter);
+    }
+  };
+
+  // const OrderCard = () => {
   return (
     <Card.Group>
       <Card className="card1">
@@ -27,6 +45,26 @@ const OrderCard = () => {
             <Card.Header>
               Dim-Sum bbq
               <Card.Meta>3 pcs</Card.Meta>
+              <Card.Meta>Qty:{qty}</Card.Meta>
+              <div className="qty2">
+                <div>
+                  <Button
+                    circular
+                    icon="minus"
+                    onClick={handleMinusQty}
+                    className="add-btn"
+                  />
+                </div>
+                <h2 className="qtyNum1">{qty}</h2>
+                <div>
+                  <Button
+                    circular
+                    icon="plus"
+                    onClick={handlePlusQty}
+                    className="add-btn"
+                  />
+                </div>
+              </div>
             </Card.Header>
             <div>
               <Button icon="trash alternate outline" size="large" color="red">
