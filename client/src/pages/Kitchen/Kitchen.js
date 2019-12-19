@@ -2,7 +2,8 @@ import React from "react";
 import KitchenCard from "./../../components/KitchenCard";
 import { Button } from "semantic-ui-react";
 import "./styles";
-import TableNumber from "../../components/TableNumber";
+import TableNumber from '../../components/TableNumber';
+
 
 const Kitchen = () => {
   // const date = new Date();
