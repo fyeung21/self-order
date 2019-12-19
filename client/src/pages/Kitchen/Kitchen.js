@@ -11,9 +11,6 @@ const Kitchen = () => {
 
     today = mm + '/' + dd + '/' + yyyy;
 
-const Kitchen = () => {
-  // const date = new Date();
-  
     return (
         <div className="kitchenBackground">
             <h1>{today}</h1>
@@ -28,11 +25,7 @@ const Kitchen = () => {
                     <KitchenOrder />
                 </Grid.Column>
             </Grid>
-        <h3>{"time done 14:40 (will show time when 'done' is pressed)"}</h3>
-        <Button basic color="blue">
-          Done
-        </Button>
-    </div>
-  );
+        </div>
+    );
 };
 export default Kitchen;
