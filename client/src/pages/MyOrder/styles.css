@@ -7,7 +7,12 @@
 
 .btns {
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 20px;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-top: 30px;
+  max-width: 150px;
+  margin: 0 auto;
+}
+.ui.button.btn {
+  margin-bottom: 10px;
 }
