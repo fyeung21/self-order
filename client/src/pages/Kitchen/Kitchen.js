@@ -1,34 +1,37 @@
-import React from "react";
-import KitchenCard from "./../../components/KitchenCard";
-import { Button } from "semantic-ui-react";
+import React from 'react';
+import KitchenOrder from '../../components/KitchenOrder';
+import { Grid } from 'semantic-ui-react'
 import "./styles";
-import TableNumber from '../../components/TableNumber';
 
+const Kitchen = () => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
 
 const Kitchen = () => {
   // const date = new Date();
   
     return (
         <div className="kitchenBackground">
-            <p>This is what the kitchen would see.</p>
-            <h1>{"01/23/2020"}</h1>
-            <div>
-                <h3>{"time created 14:20"}</h3>
-                <TableNumber />
-                <div>
-                    <KitchenCard />
-                    <KitchenCard />
-                    <KitchenCard />
-                </div>
-                <h3>{"time done 14:40 (will show time when 'done' is pressed)"}</h3>
-                <Button basic color="blue">Done</Button>
-            </div>
-        </div>
+            <h1>{today}</h1>
+            <Grid columns={3} relaxed className="test">
+                <Grid.Column className="kitchenGrid">
+                    <KitchenOrder />
+                </Grid.Column>
+                <Grid.Column className="kitchenGrid">
+                    <KitchenOrder />
+                </Grid.Column>
+                <Grid.Column className="kitchenGrid">
+                    <KitchenOrder />
+                </Grid.Column>
+            </Grid>
         <h3>{"time done 14:40 (will show time when 'done' is pressed)"}</h3>
         <Button basic color="blue">
           Done
         </Button>
-      </div>
     </div>
   );
 };
