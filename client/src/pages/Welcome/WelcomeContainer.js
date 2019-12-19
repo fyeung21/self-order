@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Welcome from "./Welcome";
-import tableNumber from "../../components/TableNumber";
+import TableNumber from "../../components/TableNumber";
 
 class WelcomeContainer extends Component {
   render() {
     return (
       <div>
-        <tableNumber />
+        <TableNumber />
         <Welcome />
       </div>
     );
