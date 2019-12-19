@@ -11,3 +11,9 @@
   margin: 0 auto;
   width: 200px;
 }
+.ui.fluid.card.kitOrderCard {
+  margin: 1rem 0;
+}
+.content {
+  margin: 1rem;
+}

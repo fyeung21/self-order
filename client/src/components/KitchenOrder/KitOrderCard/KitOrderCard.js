@@ -1,27 +1,18 @@
 import React from 'react';
-import { Grid, Image, Card, Modal, Button } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import "./../kitchenStyles.css";
 
 const KitOrderCard = ({ item }) => {
 
     return (
         <div>
-            <Card>
+            <Card fluid className="kitOrderCard">
                 <Card.Content>
-                    <Image
-                        floated='right'
-                        size='mini'
-                        src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-                    />
-                    <Card.Header>{"Shrimp Dumplings"}</Card.Header>
-                    <Card.Meta>Qty: {"3"}</Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                    <div className='ui two buttons'>
-                        <Button basic color='green'>
-                            Ready/Out
+                    <Button floated='right' basic color='green'>
+                        Ready/Out
                         </Button>
-                    </div>
+                    <Card.Header>{"shrimp dumplings"}</Card.Header>
+                    <Card.Meta>Qty: {"3"}</Card.Meta>
                 </Card.Content>
             </Card>
         </div>
