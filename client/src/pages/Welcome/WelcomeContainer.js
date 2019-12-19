@@ -3,7 +3,11 @@ import Welcome from "./Welcome";
 
 class WelcomeContainer extends Component {
   render() {
-    return <Welcome />;
+    return (
+      <div>
+        <Welcome />
+      </div>
+    );
   }
 }
 export default WelcomeContainer;

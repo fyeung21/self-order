@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import "./styles.css";
 
-class tableNumber extends Component {
-  render() {
-    return (
-      <div>
-        <p>Table Number: 00012</p>
-      </div>
-    );
-  }
+const TableNumber = () => {
+  return (
+    <div>
+      <p className="number">Table Number: 00012</p>
+    </div>
+  )
 }
-export default tableNumber;
+export default TableNumber;

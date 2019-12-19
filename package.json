@@ -12,6 +12,7 @@
     "history": "^4.10.1",
     "meteor-node-stubs": "^1.0.0",
     "react": "^16.12.0",
+    "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
