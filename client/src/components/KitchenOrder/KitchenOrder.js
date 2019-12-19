@@ -18,7 +18,7 @@ const KitchenOrder = () => {
                 <KitOrderCard />
             </div>
             <h3 textAlign="center">{"14:40"}</h3> {/* show time when 'done' is pressed */}
-            <Button size="large" basic color="white" className="doneBtn">Done</Button>
+            <Button size="large" basic color="red" className="doneBtn">Done</Button>
         </div>
     )
 }

@@ -14,15 +14,14 @@ const Kitchen = () => {
     return (
         <div className="kitchenBackground">
             <h1>{today}</h1>
-            <p>This is what the kitchen would see.</p>
-            <Grid columns={3}>
-                <Grid.Column>
+            <Grid columns={3} relaxed className="test">
+                <Grid.Column className="kitchenGrid">
                     <KitchenOrder />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="kitchenGrid">
                     <KitchenOrder />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className="kitchenGrid">
                     <KitchenOrder />
                 </Grid.Column>
             </Grid>
