@@ -40,11 +40,11 @@ const OrderCard = ({ item }) => {
               className="image-card"
               // floated="right"
               // size="small"
-              src="http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg"
+              src={item.imgurl}
             />
             <Card.Header>
-              Dim-Sum bbq
-              <Card.Meta>3 pcs</Card.Meta>
+              {item.name}
+              <Card.Header>3 pcs</Card.Header>
               <Card.Meta>Qty:{qty}</Card.Meta>
               <div className="qty2">
                 <div>
@@ -67,7 +67,12 @@ const OrderCard = ({ item }) => {
               </div>
             </Card.Header>
             <div>
-              <Button icon="trash alternate outline" size="large" color="red">
+              <Button
+                basic
+                icon="trash alternate outline"
+                size="large"
+                color="red"
+              >
                 {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
               </Button>
             </div>
@@ -83,7 +88,27 @@ const OrderCard = ({ item }) => {
             />
             <Card.Header>
               Egg Custard
-              <Card.Meta>4 pcs</Card.Meta>
+              <Card.Meta>3 pcs</Card.Meta>
+              <Card.Meta>Qty:{qty}</Card.Meta>
+              <div className="qty2">
+                <div>
+                  <Button
+                    circular
+                    icon="minus"
+                    onClick={handleMinusQty}
+                    className="add-btn"
+                  />
+                </div>
+                <h2 className="qtyNum1">{qty}</h2>
+                <div>
+                  <Button
+                    circular
+                    icon="plus"
+                    onClick={handlePlusQty}
+                    className="add-btn"
+                  />
+                </div>
+              </div>
             </Card.Header>
             <div>
               <Icon name="trash alternate outline" size="large" color="red" />
