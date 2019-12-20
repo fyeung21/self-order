@@ -74,16 +74,16 @@ const items = [
 }
 ]
 Meteor.startup(() => {
-  //add items from my menu.json when there is db is emtpy
-  // const menuItems = Menu.find({}).count()
-  //   if (!menuItems) {
-  //     //make some data
-  //     for (let i in items){
-  //       Menu.insert(
-  //         items[i]
-  //     )
-  //   }
-  // }
+  // add items from my menu.json when there is db is emtpy
+  const menuItems = Menu.find({}).count()
+    if (!menuItems) {
+      //make some data
+      for (let i in items){
+        Menu.insert(
+          items[i]
+      )
+    }
+  }
 
   //publish then menu collection
   Meteor.publish('menu', function() {
