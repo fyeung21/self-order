@@ -10,7 +10,7 @@ const Welcome = () => {
 
   const clickHandler = () => {
     console.log(tableNumber)
-    // history.push("../pages/Menu")
+    history.push("../pages/Menu")
   };
 
   const handleChange = (e , {value} ) => {
@@ -32,7 +32,7 @@ const Welcome = () => {
           value={tableNumber}
           fluid icon='utensils' 
           iconPosition='left' 
-          placeholder='PASSCODE' />
+          placeholder='Enter a table number' />
           <Button color='red' fluid size='large' onClick={clickHandler}>
             GO TO MENU
           </Button>
