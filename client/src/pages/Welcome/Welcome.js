@@ -8,9 +8,11 @@ const Welcome = () => {
   const [tableNumber, setTableNumner] = useState('')
   const history = useHistory();
 
-  const clickHandler = () => {
+  const onSubmitTableNumber = () => {
     console.log(tableNumber)
-    history.push("../pages/Menu")
+    //call a meteor method located in collections/activeTables.js
+    Meteor.call('activeTables.insert', tableNumber )
+    // history.push("../pages/Menu")
   };
 
   const handleChange = (e , {value} ) => {
@@ -33,7 +35,7 @@ const Welcome = () => {
           fluid icon='utensils' 
           iconPosition='left' 
           placeholder='Enter a table number' />
-          <Button color='red' fluid size='large' onClick={clickHandler}>
+          <Button color='red' fluid size='large' onClick={onSubmitTableNumber}>
             GO TO MENU
           </Button>
         </Segment>
@@ -45,4 +47,5 @@ const Welcome = () => {
   </Grid>
   );
 };
+
 export default Welcome;
