@@ -14,7 +14,7 @@ const Welcome = () => {
     console.log('onSubmitTableNumber' + tableNumber)
     //call a meteor method located in collections/activeTables.js
     Meteor.call('activeTables.insert', tableNumber)
-    history.push("../pages/Menu")
+    history.push("./Menu")
   };
 
   const handleChange = (e) => {
@@ -37,6 +37,7 @@ const Welcome = () => {
                     <Form.Input
                       onChange={e => {
                         handleChange(e)
+                        // updateTableNumber(tableNumber)
                         }
                       }
                       value={tableNumber}

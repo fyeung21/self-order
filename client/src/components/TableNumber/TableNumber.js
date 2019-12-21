@@ -1,13 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./styles.css";
-import TableContextProvider, { TableContext } from "../../contexts/TableContextProvider"
+import { TableContext } from "../../contexts/TableContextProvider"
 
 
 const TableNumber = () => {
-  // const [number, setNumber] = useState(0)
-  // const value = useContext(TableContext);
-  // setNumber(tableNumber)
-  // console.log("!!" + value)
   return (
     <TableContext.Consumer> 
         {({getTableNumber})=>{
