@@ -2,6 +2,8 @@ import _ from 'lodash'
 import { Meteor } from 'meteor/meteor';
 import { Menu } from '/imports/api/collections/menu';
 import { GlobalOrders } from '/imports/api/collections/globalOrders';
+import { ActiveTables } from '/imports/api/collections/activeTables';
+
 
 
 
@@ -90,7 +92,7 @@ Meteor.startup(() => {
     return Menu.find({})
   })
 
-  Meteor.publish('user', function() {
-    return User.find({})
+  Meteor.publish('activeTables', function() {
+    return ActiveTables.find({})
   })
 });
