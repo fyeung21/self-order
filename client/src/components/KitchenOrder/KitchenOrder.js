@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import TableNumber from '../TableNumber';
+import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import "./kitchenStyles.css";
 
