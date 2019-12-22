@@ -1,0 +1,84 @@
+import React, { Component, Fragment, useState } from "react";
+import {
+  Button,
+  Icon,
+  Card,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from "semantic-ui-react";
+import "./styles.css";
+
+const OrderCard = ({ item }) => {
+  const [qty, setQty] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handlePlusQty = () => {
+    let counter = qty;
+    counter++;
+    setQty(counter);
+  };
+  const handleMinusQty = () => {
+    let counter = qty;
+
+    if (counter > 0) {
+      counter--;
+      setQty(counter);
+    }
+  };
+
+  // const OrderCard = () => {
+  return (
+    <Card fluid className="card1">
+      <Card.Content>
+        <div className="content1">
+          <Image
+            className="image-card"
+            // floated="right"
+            // size="small"
+            src={item.imgurl}
+          />
+          <Card.Header className="header-my-order">
+            {item.name}
+            <Card.Header>3 pcs</Card.Header>
+            <Card.Meta>Qty:{qty}</Card.Meta>
+            <div className="qty2">
+              <div>
+                <Button
+                  circular
+                  icon="minus"
+                  onClick={handleMinusQty}
+                  className="add-btn"
+                />
+              </div>
+              <h2 className="qtyNum1">{qty}</h2>
+              <div>
+                <Button
+                  circular
+                  icon="plus"
+                  onClick={handlePlusQty}
+                  className="add-btn"
+                />
+              </div>
+            </div>
+          </Card.Header>
+          <div>
+            <Button
+              basic
+              icon="trash alternate outline"
+              size="large"
+              color="red"
+            >
+              {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
+            </Button>
+          </div>
+        </div>
+      </Card.Content>
+    </Card>
+  );
+};
+
+export default OrderCard;
