@@ -3,9 +3,8 @@ import React, {Fragment, useState} from 'react';
 import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
 import "./itemOrderStyle.css"
 
-const ItemOrderForm = ({item}) => {
+const ItemOrderForm = ({item, modalOpen}) => {
 const [qty, setQty] = useState(0)
-const [visible, setVisible] = useState(true)
 
   const handlePlusQty = () => {
     let counter = qty
@@ -50,7 +49,7 @@ const [visible, setVisible] = useState(true)
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='black' onClick={handleClose}>
+        <Button color='black' onClick={modalOpen}>
           Close
         </Button>
         <Button

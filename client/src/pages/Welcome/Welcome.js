@@ -12,8 +12,20 @@ const Welcome = () => {
 
   const onSubmitTableNumber = () => {
     console.log('onSubmitTableNumber' + tableNumber)
+
     //call a meteor method located in collections/activeTables.js
-    Meteor.call('activeTables.insert', tableNumber)
+    //submit a tableNumber to this method, 
+    //then return the current orderId
+    Meteor.call('activeTables.insert', tableNumber, 
+      (error, result) => {
+        if (error) {
+          // handle error
+        }
+        else {
+          console.log('!!!' + result);
+        }
+      }
+    )
     history.push("./Menu")
   };
 

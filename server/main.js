@@ -87,12 +87,16 @@ Meteor.startup(() => {
     }
   }
 
-  //publish then menu collection
+  //publish collection
   Meteor.publish('menu', function() {
     return Menu.find({})
   })
 
   Meteor.publish('activeTables', function() {
     return ActiveTables.find({})
+  })
+
+  Meteor.publish('globalOrders', function() {
+    return GlobalOrders.find({})
   })
 });

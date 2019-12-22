@@ -15,16 +15,13 @@ Meteor.methods({
       GlobalOrders.insert({"OrderId" : newOrderId, tableNumber})
       ActiveTables.insert({"OrderId" : newOrderId, tableNumber})
       console.log("new orderId" + newOrderId)
-      // Meteor.call('globalOrders.count')
-      // console.log ('count '+JSON.stringify(newOrderNumber))
     }
     else {
       console.log("table " + tableNumber + ' found!!!')
+      console.log("tablddb " + JSON.stringify(tables[0].OrderId))
+      const orderId = tables[0].OrderId
+      return orderId
     }
-  // console.log('!!!'+JSON.stringify(tables))
-    // ActiveTables.insert({"table" : tableNumber})
-    // let tables = ActiveTables.find().fetch()
-    // console.log('!!!'+JSON.stringify(tables))
   }
 })
 
