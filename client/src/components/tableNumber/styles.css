@@ -1,7 +1,0 @@
-.number {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  width: 100%;
-  padding-right: 65px;
-}

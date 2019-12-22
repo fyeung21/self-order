@@ -1,19 +1,11 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import "./styles.css";
-import { TableContext } from "../../contexts/TableContextProvider"
-
 
 const TableNumber = () => {
   return (
-    <TableContext.Consumer> 
-        {({getTableNumber})=>{
-        return (
-          <div>
-            <p className="number">Table Number: {getTableNumber}</p>
-          </div>
-        )
-      }}
-    </TableContext.Consumer>
+    <div>
+      <p className="number">Table Number: 00012</p>
+    </div>
   )
 }
 export default TableNumber;
