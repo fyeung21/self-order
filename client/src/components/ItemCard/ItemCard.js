@@ -22,7 +22,11 @@ const ItemCard = ({ item }) => {
                 </Card>
             </Grid.Column>
         }>
-            <ItemOrderForm item={item} modalOpen={handleClose} />
+            <ItemOrderForm 
+                item={item} 
+                modalOpen={handleClose} 
+                
+            />
         </Modal>
     )
 }

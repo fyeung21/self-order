@@ -7,28 +7,20 @@ import TableNumber from '../../components/TableNumber/';
 import { Grid, Button } from 'semantic-ui-react';
 import NavBar from '../../components/NavBar/NavBar';
 import { Menu } from '/imports/api/collections/menu';
+import OrderId from '../../components/OrderId';
+import "./styles.css";
 
 // const menuItems = require('./menu.json');
-
-
 const MenuContainer = ({menu, ...props}) => {
-    const item = {
-        "name": "1111Shrimp Dumplings",
-        "price" : 7,
-        "pcs" : 4,
-        "description" : "Whole shrimp in a translucent wrapper.",
-        "cataglory" : " Steamed",
-        "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
-        "featured" : false
-    }
-
-    const addItem = () => {
+const addItem = () => {
         Meteor.call('menu.insert', item )
     }
-
     return (
         <div>
-            <TableNumber />
+            <div className="orderContent">
+            <span className="orderId"><OrderId className="orderId"/></span>
+            <span><TableNumber /></span>
+            </div>
             <Grid doubling columns={4} padded>
                 {menu.map((item) => (
                     <Item item={item} key={item.name} />
@@ -49,7 +41,6 @@ export default withTracker(() => {
     //subscribe the 'menu' collection from mongodb
     Meteor.subscribe('menu')
     const menu = Menu.find({}).fetch()
-
     return { //return an object
         menu
     }

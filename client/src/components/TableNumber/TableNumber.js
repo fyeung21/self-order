@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import "./styles.css";
 import { TableContext } from "../../contexts/TableContextProvider"
 
@@ -8,9 +8,9 @@ const TableNumber = () => {
     <TableContext.Consumer> 
         {({getTableNumber})=>{
         return (
-          <div>
-            <p className="number">Table Number: {getTableNumber}</p>
-          </div>
+          <Fragment>
+              Table Number: {getTableNumber}
+          </Fragment>
         )
       }}
     </TableContext.Consumer>

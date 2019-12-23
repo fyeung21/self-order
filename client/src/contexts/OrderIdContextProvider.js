@@ -6,23 +6,23 @@ import { Redirect } from 'react-router';
 export const OrderIdContext = createContext();
 
 const OrderIdContextProvider = ({ children }) => {
-  const [orderIdNumber, setOrderIdNumber] = useState(0)
+  const [orderId, setOrderId] = useState(0)
   const [redirect, setRedirect] = useState(false)
   const history = useHistory();
 
-  //check for orderIdNumber cookie when page is loaded
+  //check for orderId cookie when page is loaded
   useEffect(()=>{
-    let orderIdNumber = getCookie("orderIdNumber");
-  if (orderIdNumber != "") {
-    setOrderIdNumber(orderIdNumber)
+    let orderId = getCookie("orderId");
+  if (orderId != "") {
+    setOrderId(orderId)
     } 
   else {
     // alert("Session expired. Back to Welcome Page. ");
     // setRedirect(true)
-    console.log('run')
+    console.log('useeffect get orderid')
     history.push('/')
   }
-  },[orderIdNumber])
+  },[orderId])
 
   function getCookie(cname) {
     var name = cname + "=";
@@ -39,20 +39,20 @@ const OrderIdContextProvider = ({ children }) => {
     return "";
   }
 
-  const updateOrderIdNumber = (value) => {
-      setOrderIdNumber(value)
+  const updateOrderId = (value) => {
+      setOrderId(value)
       //set cookie for orderId number so it will remain when user refresh the page
       let d = new Date();
       d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000)); //1 day
       var expires = "expires="+d.toUTCString();
-      document.cookie = "orderIdNumber" + "=" + value + ";" + expires + ";"
+      document.cookie = "orderId" + "=" + value + ";" + expires + ";"
   }
 
   return (
     <OrderIdContext.Provider
        value={
-         {getOrderIdNumber : orderIdNumber,
-         updateOrderIdNumber : updateOrderIdNumber}
+         {getOrderId : orderId,
+         updateOrderId : updateOrderId}
        }> {children}
        {/* {redirect ? <Redirect to="/" /> : null} */}
     </OrderIdContext.Provider>

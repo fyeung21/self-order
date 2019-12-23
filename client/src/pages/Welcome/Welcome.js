@@ -3,30 +3,38 @@ import { useHistory } from "react-router-dom";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Meteor } from 'meteor/meteor';
 import TableNumber from "../../components/TableNumber";
+import OrderId from '../../components/OrderId';
 import { TableContext } from '../../contexts/TableContextProvider'
+import { OrderIdContext } from '../../contexts/OrderIdContextProvider'
+import "./styles.css";
 
 
 const Welcome = () => {
-  const [tableNumber, setTableNumner] = useState('')
+  const [tableNumber, setTableNumner] = useState(0)
+  const [orderId, setOrderId] = useState(0)
+
   const history = useHistory();
 
-  const onSubmitTableNumber = () => {
-    console.log('onSubmitTableNumber' + tableNumber)
-
+  const  onSubmitTableNumber = () => {
     //call a meteor method located in collections/activeTables.js
     //submit a tableNumber to this method, 
-    //then return the current orderId
-    Meteor.call('activeTables.insert', tableNumber, 
+    //then return the current orderId in promise.
+    return new Promise ((resolve, reject) => {
+      Meteor.call('activeTables.insert', tableNumber, 
       (error, result) => {
         if (error) {
+          reject()
           // handle error
         }
         else {
-          console.log('!!!' + result);
+          console.log('Current order ID?: ' + result);
+          setOrderId(result)
+          resolve(result) 
+          history.push("./Menu")
         }
       }
     )
-    history.push("./Menu")
+    })
   };
 
   const handleChange = (e) => {
@@ -34,11 +42,16 @@ const Welcome = () => {
   }
 
   return (
+    <OrderIdContext.Consumer>
+      {({updateOrderId}) => (
     <TableContext.Consumer>
-      {({ updateTableNumber }) => {
+      {({ updateTableNumber, currentOrderId }) => {
         return (
           <div>
-            <TableNumber />
+            <div className="orderContent">
+            <span className="orderId"><OrderId className="orderId"/></span>
+            <span><TableNumber /></span>
+          </div>
             <Grid textAlign='center' style={{ height: '90vh' }} verticalAlign='middle'>
               <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='red' textAlign='center'>
@@ -58,9 +71,16 @@ const Welcome = () => {
                       placeholder='Enter a table number' 
                     />
                     <Button color='red' fluid size='large' onClick={() => {
-                      onSubmitTableNumber() //this function call meteor method to set the table number to the server
-                      updateTableNumber(tableNumber) //this function update the table number in TableContext
-                      }
+                      //this function call a meteor method 
+                      //to set the table number to the server
+                      //then return an order id
+                      onSubmitTableNumber()
+                      .then((result) => {
+                        console.log('promise ' + result)
+                        updateOrderId(result) //this function update the order ID in TableContext
+                        updateTableNumber(tableNumber)//this function update the table number in TableContext
+                      }) 
+                    }
                     }>
                       GO TO MENU
                     </Button>
@@ -72,6 +92,8 @@ const Welcome = () => {
         )
       }}
     </TableContext.Consumer>
+    )}
+    </OrderIdContext.Consumer>
   );
 };
 
