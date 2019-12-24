@@ -10,8 +10,7 @@ import "./styles.css";
 
 
 const Welcome = () => {
-  const [tableNumber, setTableNumner] = useState(0)
-  const [orderId, setOrderId] = useState(0)
+  const [tableNumber, setTableNumner] = useState('')
 
   const history = useHistory();
 
@@ -23,12 +22,11 @@ const Welcome = () => {
       Meteor.call('activeTables.insert', tableNumber, 
       (error, result) => {
         if (error) {
-          reject()
+          reject(console.log(error))
           // handle error
         }
         else {
           console.log('Current order ID?: ' + result);
-          setOrderId(result)
           resolve(result) 
           history.push("./Menu")
         }
@@ -43,7 +41,7 @@ const Welcome = () => {
 
   return (
     <OrderIdContext.Consumer>
-      {({updateOrderId}) => (
+    {({updateOrderId}) => (
     <TableContext.Consumer>
       {({ updateTableNumber, currentOrderId }) => {
         return (
