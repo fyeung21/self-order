@@ -14,7 +14,7 @@ const ItemCard = ({ item }) => {
             <Grid.Column item={item.name}>
                 <Card fluid
                     onClick={handleOpen}>
-                    <Image src={item.imgurl} />
+                    <Image className="img" src={item.imgurl} />
                     <Card.Content>
                         <div className="title">{item.name}</div>
                         <div className="price">${item.price} / <span className="pcs">{item.pcs}pcs</span></div>
@@ -25,7 +25,7 @@ const ItemCard = ({ item }) => {
             <ItemOrderForm 
                 item={item} 
                 modalOpen={handleClose} 
-                
+
             />
         </Modal>
     )

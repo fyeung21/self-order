@@ -2,34 +2,40 @@ import React, {Fragment, useState} from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data'
 import { withTracker } from 'meteor/react-meteor-data';
-import Item from '../../components/ItemCard/';
-import TableNumber from '../../components/TableNumber/';
-import { Form, Divider, Image } from 'semantic-ui-react';
-import NavBar from '../../components/NavBar/NavBar';
+import Item from '../ItemCard';
+import TableNumber from '../TableNumber';
+import { Form, Divider, Image, Button } from 'semantic-ui-react';
+import NavBar from '../NavBar/NavBar';
 import { Menu } from '/imports/api/collections/menu';
-import OrderId from '../../components/OrderId';
+import OrderId from '../OrderId';
 import "./styles.css";
 // import AddItemFrom from '.';
 
 // const menuItems = require('./menu.json');
-const AddItemForm = () => {
+const AddItemForm = ( {closeModal} ) => {
   const [state, setState] = useState(
     { 
-    title:'', 
+    name:'', 
     price:'', 
     pcs:'', 
     description:'', 
-    imgurl:''
+    imgurl:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png'
     }
   )
-  let { title, price, pcs, description, imgurl} = state
+  let { name, price, pcs, description, imgurl} = state
 
     const addItem = () => {
             Meteor.call('menu.insert', item )
         }
 
     handleSubmit = () => {
-      console.log(JSON.stringify(state))
+      Meteor.call('menu.insert', state )
+      closeModal(false)
+    }
+
+    onClose = () => {
+      console.log('close clicked')
+      closeModal(false)
     }
 
     handleChange = (e, {name, value}) => {
@@ -55,22 +61,25 @@ const AddItemForm = () => {
       <h1>Add an item</h1>
       <Form onSubmit={this.handleSubmit}>
         <Form.Input 
-          label='Title' 
-          placeholder='Title' 
-          name='title'
-          value={title}
+          required
+          label='Item name' 
+          placeholder='Name' 
+          name='name'
+          value={name}
           onChange={this.handleChange}
-          fuild/>
+          />
         <Form.Group>
           <Form.Input 
-            label='Price' 
+            required
+            label='Price (number only)' 
             placeholder='Price' 
             name='price'
             value={price}
             onChange={this.handleChange} 
             width={8} />
           <Form.Input
-            label='Pcs' 
+            required
+            label='Pcs (number only)' 
             placeholder='Pcs' 
             name='pcs'
             value={pcs}
@@ -83,18 +92,26 @@ const AddItemForm = () => {
           name='description'
           value={description}
           onChange={this.handleChange}
-          fuild/>
+          />
         <Form.Input
+          required
           label='imgurl' 
           placeholder='imgurl' 
           name='imgurl'
           value={imgurl}
           onChange={this.handleChange}
-          fuild/>
+          />
+        <span className="button">
         <Form.Button content='Submit' />
+        </span>
+        <span className="button">
+          <Button onClick={onClose}>
+            Cancel
+          </Button> 
+        </span>
       </Form>
       <Divider hidden />
-      <Image src={imgurl} size='medium' />
+      <Image src={imgurl} size='small' />
       <div>
       {JSON.stringify(state)}
       </div>

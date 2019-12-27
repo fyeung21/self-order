@@ -81,6 +81,7 @@ Meteor.startup(() => {
     if (!menuItems) {
       //make some data
       for (let i in items){
+        console.log(i)
         Menu.insert(
           items[i]
       )
