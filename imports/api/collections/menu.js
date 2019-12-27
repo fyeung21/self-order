@@ -22,4 +22,14 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  'menu.activation': (_id, activation) => {
+    Menu.update({"_id" : _id}, {$set: {activation}}, (err, doc) => {
+      const item = Menu.find({"_id" : _id}).fetch()
+      console.log('doc.activation update: ' + item[0].activation)
+      return item[0].activation
+    })
+  }
+})
+
 export const Menu =  new Mongo.Collection('menu')

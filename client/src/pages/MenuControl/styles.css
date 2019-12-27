@@ -15,27 +15,25 @@
 
 .ui.toggle.checkbox.active input:focus:checked~.box:before,
 .ui.toggle.checkbox.active input:focus:checked~label:before {
-    background-color: rgb(204, 18, 18) !important
+    background-color: rgb(27, 199, 5) !important
+
 }
 
 .ui.toggle.checkbox.active input:checked~.box:before, 
 .ui.toggle.checkbox.active input:checked~label:before {
-  background-color: rgb(204, 18, 18) !important
+  background-color: rgb(27, 199, 5) !important
+
 }
 z
 .ui.toggle.checkbox.active label:hover::before {
-  background-color: rgb(27, 199, 5);
+  background-color: rgb(190, 190, 190) !important
 }
 
 .ui.toggle.checkbox.active .box:before, 
 .ui.toggle.checkbox.active label:before {
-  background-color: rgb(27, 199, 5);
+  background-color: rgb(190, 190, 190) !important
 }
 
-.ui.toggle.checkbox.active .box:hover::before, 
-.ui.toggle.checkbox.active label:hover::before {
-  background-color: rgb(27, 199, 5);
-}
 
 .ui.modal.transition.visible.active.addItemForm {
  padding:30px 

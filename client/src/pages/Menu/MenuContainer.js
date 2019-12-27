@@ -40,7 +40,7 @@ const addItem = () => {
 export default withTracker(() => {
     //subscribe the 'menu' collection from mongodb
     Meteor.subscribe('menu')
-    const menu = Menu.find({}).fetch()
+    const menu = Menu.find({"activation" : true}).fetch()
     return { //return an object
         menu
     }
