@@ -21,10 +21,8 @@ const MenuControlContainer = ({menu, ...props}) => {
     const onClose = (close) => {
         console.log('onclose' + close)
         setOpen(close)
-    } 
-    const addItem = () => {
-        Meteor.call('menu.insert', item )
     }
+    
     return (
         <div>
           <h1>Menu Control Panel</h1>

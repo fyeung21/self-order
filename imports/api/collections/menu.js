@@ -15,4 +15,11 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  'menu.updateItem': (item) => {
+    console.log('Update item:', item)
+    Menu.update({"_id" : item._id}, {$set: item})
+  }
+})
+
 export const Menu =  new Mongo.Collection('menu')
