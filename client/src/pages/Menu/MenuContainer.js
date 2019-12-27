@@ -40,7 +40,9 @@ const addItem = () => {
 export default withTracker(() => {
     //subscribe the 'menu' collection from mongodb
     Meteor.subscribe('menu')
-    const menu = Menu.find({"activation" : true}).fetch()
+    const query = {"activation" : true};
+    const options = { sort: {"sortingIndex" : 1 } }; //-1 = descending sort 
+    const menu = Menu.find(query, options).fetch()
     return { //return an object
         menu
     }

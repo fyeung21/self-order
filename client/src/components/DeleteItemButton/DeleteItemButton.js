@@ -5,11 +5,11 @@ import AddItemForm from '../../components/AddItemForm'
 import { Button, Icon, Image, Item, Checkbox, Header, Modal } from 'semantic-ui-react'
 import './styles.css'
 
-const DeleteItemButton = ({item}) => {
+const DeleteItemButton = ({item, itemTotal}) => {
   const [delModal, setDelModal] = useState(false)
 
   onDelItem = () => {
-    Meteor.call('menu.deleteItem', item )
+    Meteor.call('menu.deleteItem', item, itemTotal )
   }
 
   openDelModal= () => {

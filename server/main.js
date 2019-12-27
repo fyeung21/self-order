@@ -19,7 +19,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 1
 },
 {
     "name": "Steamed Soup Dumplings",
@@ -29,7 +30,9 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 2
+
 },
 {
     "name": "Pork Siu Mai",
@@ -39,7 +42,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-pork-siu-mai-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 3
 }, 
 {
     "name": "Steamed Pork Ribs",
@@ -49,7 +53,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-ribs-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 4
 },   
 {
     "name": "Steamed Chicken Feet",
@@ -59,7 +64,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-chicken-feet-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 5
 },   
 {
     "name": "Sticky Rice in Lotus Leaf",
@@ -69,7 +75,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-sticky-rice-in-lotus-leaf-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 6
 },     
 {
     "name": "Steamed Pork Buns",
@@ -79,7 +86,8 @@ const items = [
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-buns-thumb.jpg",
     "featured" : false,
-    "activation" : true
+    "activation" : true,
+    "sortingIndex" : 7
 }
 ]
 Meteor.startup(() => {

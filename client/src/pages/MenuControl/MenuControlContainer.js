@@ -14,6 +14,8 @@ import MenuControl from './MenuControl';
 
 // const menuItems = require('./menu.json');
 const MenuControlContainer = ({menu, ...props}) => {
+    const itemTotal = menu.length
+    console.log('length' + itemTotal)
     const [ open, setOpen ] = useState(false)
     const onAddItemnModal = () => {
         setOpen(true)
@@ -22,19 +24,19 @@ const MenuControlContainer = ({menu, ...props}) => {
         console.log('onclose' + close)
         setOpen(close)
     }
-    
+
     return (
         <div>
           <h1>Menu Control Panel</h1>
-          <Button onClick={onAddItemnModal}>Add an item +</Button>
+          <Button className="addButton" onClick={onAddItemnModal}>Add an item +</Button>
           <Modal dimmer='blurring' open={open} onClose={onClose} className="addItemForm">
-            <AddItemForm closeModal={onClose}/>
+            <AddItemForm closeModal={onClose} sortingIndex={itemTotal}/>
           </Modal>
             <div className="orderContent">
             </div>
             <Item.Group divided>
                 {menu.map((item) => (
-                    <MenuControl item={item} key={item.name} />
+                    <MenuControl item={item} key={item.name} itemTotal={itemTotal}/>
                 ))}
             </ Item.Group>
             <Button onClick={onAddItemnModal}>Add an item +</Button>
@@ -51,7 +53,9 @@ const MenuControlContainer = ({menu, ...props}) => {
 export default withTracker(() => {
     //subscribe the 'menu' collection from mongodb
     Meteor.subscribe('menu')
-    const menu = Menu.find({}).fetch()
+    const query = {};
+    const options = { sort: {"sortingIndex" : 1 } }; //-1 = descending sort 
+    const menu = Menu.find(query, options).fetch()
     return { //return an object
         menu
     }

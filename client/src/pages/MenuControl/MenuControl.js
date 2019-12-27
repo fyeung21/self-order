@@ -6,11 +6,11 @@ import EditItemForm from '../../components/EditItemForm'
 import { Button, Item, Checkbox, Modal } from 'semantic-ui-react'
 import './styles.css'
 
-const MenuControl = ({item}) => {
+const MenuControl = ({item, itemTotal}) => {
   const [ open, setOpen ] = useState(false)
   const [ activation, setActivation] = useState(item.activation)
 
-  onEditItem = () => {
+  const onEditItem = () => {
     setOpen(true)
   }
 
@@ -22,9 +22,25 @@ const MenuControl = ({item}) => {
       Meteor.call('menu.activation', item._id, !activation)
       setActivation(!activation)
   }
+
+  const onUp = () => {
+      Meteor.call('menu.itemGoUp', item)
+  }
+
+  const onDown = () => {
+    Meteor.call('menu.itemGoDown', item, itemTotal)
+}
     return (
       <Fragment>
         <Item>
+          <div className="sortDiv">
+            <div className="sortButton">
+            <Button icon="chevron up" size="mini" circular onClick={onUp}/>
+            {'#' + item.sortingIndex}
+            <Button icon="chevron down" size="mini" circular onClick={onDown}/>
+            </div>
+          </div>
+
           <Item.Image size='tiny' src={item.imgurl} />
           <Item.Content>
             <Item.Header as='a'>{item.name}  </Item.Header>
@@ -48,7 +64,7 @@ const MenuControl = ({item}) => {
               onClick={onActivation}/>
             </div>
 
-            <DeleteItemButton item={item}/>
+            <DeleteItemButton item={item} itemTotal={itemTotal}/>
 
             <Button primary size="mini" content="Edit >" onClick={onEditItem}/>
               <Modal dimmer='blurring' open={open} onClose={onClose} className="addItemForm">

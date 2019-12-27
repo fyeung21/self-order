@@ -12,14 +12,16 @@ import "./styles.css";
 // import AddItemFrom from '.';
 
 // const menuItems = require('./menu.json');
-const AddItemForm = ( {closeModal} ) => {
+const AddItemForm = ( {closeModal, sortingIndex} ) => {
   const [state, setState] = useState(
     { 
     name:'', 
     price:'', 
     pcs:'', 
     description:'', 
-    imgurl:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png'
+    imgurl:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png',
+    sortingIndex: sortingIndex + 1,
+    activation: true
     }
   )
   let { name, price, pcs, description, imgurl} = state
