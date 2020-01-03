@@ -1,6 +1,9 @@
-.number {
+.orderContent {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   width: 100%;
+}
+.orderId {
+  margin-right: 10px;
 }

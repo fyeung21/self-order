@@ -11,3 +11,7 @@
 .pcs {
   font-size: 14px;
 }
+
+.ui.image.img {
+  object-fit: cover;
+}
