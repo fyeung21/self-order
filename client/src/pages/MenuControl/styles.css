@@ -1,0 +1,61 @@
+.ui.button.addButton{
+  margin-bottom: 20px;
+}
+.sortDiv{
+  width: 35px;
+  position: relative;
+}
+.sortButton {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ui.circular.button{
+  margin: 5px !important;
+}
+.price {
+  margin-right: 10px;
+}
+
+.right {
+  vertical-align: middle;
+  text-align: right;
+  width: 100%;
+  align-content: center;
+}
+
+.activeToggle {
+  margin: 10px;
+}
+
+.ui.toggle.checkbox.active input:focus:checked~.box:before,
+.ui.toggle.checkbox.active input:focus:checked~label:before {
+    background-color: rgb(27, 199, 5) !important
+
+}
+
+.ui.toggle.checkbox.active input:checked~.box:before, 
+.ui.toggle.checkbox.active input:checked~label:before {
+  background-color: rgb(27, 199, 5) !important
+
+}
+z
+.ui.toggle.checkbox.active label:hover::before {
+  background-color: rgb(190, 190, 190) !important
+}
+
+.ui.toggle.checkbox.active .box:before, 
+.ui.toggle.checkbox.active label:before {
+  background-color: rgb(190, 190, 190) !important
+}
+
+
+.ui.modal.transition.visible.active.addItemForm {
+ padding:30px 
+}
+
+content.delete{
+  color: white;
+}

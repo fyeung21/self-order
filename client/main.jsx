@@ -6,15 +6,18 @@ import { renderRoutes } from './src/routes';
 import { Container } from 'semantic-ui-react'
 import './main.css'
 import TableContextProvider from './src/contexts/TableContextProvider';
+import OrderIdContextProvider from './src/contexts/OrderIdContextProvider';
 
 const App = () => {
   return(
     <BrowserRouter>
-    <Container style={{ margin: 20 }}>
-      <TableContextProvider>
-        {renderRoutes()}
-      </TableContextProvider>
-    </Container>
+      <Container style={{ margin: 20 }}>
+        <TableContextProvider>
+          <OrderIdContextProvider>
+            {renderRoutes()}
+          </OrderIdContextProvider>
+        </TableContextProvider>
+      </Container>
     </BrowserRouter>
   )
 }

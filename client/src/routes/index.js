@@ -8,6 +8,9 @@ import Menu from '../pages/Menu';
 import Welcome from '../pages/Welcome';
 import MyOrder from '../pages/MyOrder';
 import Kitchen from '../pages/Kitchen';
+import MenuControl from '../pages/MenuControl';
+
+
 
 const browserHistory = createBrowserHistory();
 
@@ -24,6 +27,7 @@ export const renderRoutes = () => (
                 <Route exact path="/welcome" component={Welcome} />
                 <Route exact path="/my-order" component={Welcome} />
                 <Route exact path="/kitchen" component={Kitchen} />
+                <Route exact path="/menuControl" component={MenuControl} />
                 <Redirect from="*" to="/" />
             </Switch>
                 : 
@@ -33,6 +37,7 @@ export const renderRoutes = () => (
                 <Route exact path="/welcome" component={Welcome} />
                 <Route exact path="/my-order" component={MyOrder} />
                 <Route exact path="/kitchen" component={Kitchen} />
+                <Route exact path="/menuControl" component={MenuControl} />
                 <Redirect from="*" to="/" />
             </Switch>}
             

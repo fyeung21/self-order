@@ -18,7 +18,9 @@ const items = [
     "description" : "Whole shrimp in a translucent wrapper.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 1
 },
 {
     "name": "Steamed Soup Dumplings",
@@ -27,7 +29,10 @@ const items = [
     "description" : "Dumplings filled with pork, crab meat and broth.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 2
+
 },
 {
     "name": "Pork Siu Mai",
@@ -36,7 +41,9 @@ const items = [
     "description" : "Open-topped dumplings filled with ground pork and shrimp.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-pork-siu-mai-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 3
 }, 
 {
     "name": "Steamed Pork Ribs",
@@ -45,7 +52,9 @@ const items = [
     "description" : "Pork rib tips steamed with whole black beans and oil.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-ribs-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 4
 },   
 {
     "name": "Steamed Chicken Feet",
@@ -54,7 +63,9 @@ const items = [
     "description" : "Chewy chicken feet that are fried, marinated and steamed.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-chicken-feet-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 5
 },   
 {
     "name": "Sticky Rice in Lotus Leaf",
@@ -63,7 +74,9 @@ const items = [
     "description" : "Pork, chicken, sausage and mushrooms wrapped in a lotus leaf.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-sticky-rice-in-lotus-leaf-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 6
 },     
 {
     "name": "Steamed Pork Buns",
@@ -72,7 +85,9 @@ const items = [
     "description" : "BBQ pork wrapped in sweet dough and steamed.",
     "cataglory" : " Steamed",
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-buns-thumb.jpg",
-    "featured" : false
+    "featured" : false,
+    "activation" : true,
+    "sortingIndex" : 7
 }
 ]
 Meteor.startup(() => {
@@ -81,18 +96,23 @@ Meteor.startup(() => {
     if (!menuItems) {
       //make some data
       for (let i in items){
+        console.log(i)
         Menu.insert(
           items[i]
       )
     }
   }
 
-  //publish then menu collection
+  //publish collection
   Meteor.publish('menu', function() {
     return Menu.find({})
   })
 
   Meteor.publish('activeTables', function() {
     return ActiveTables.find({})
+  })
+
+  Meteor.publish('globalOrders', function() {
+    return GlobalOrders.find({})
   })
 });
