@@ -12,15 +12,27 @@ import {
 } from "semantic-ui-react";
 import "./styles.css";
 import NavBar from "../../components/NavBar/NavBar";
+import { withTracker } from "meteor/react-meteor-data";
+import { Menu } from "/imports/api/collections/menu";
 const menuItems = require("../../pages/Menu/menu.json");
 
-const MyOrder = () => {
+const MyOrder = ({ menu, ...props }) => {
+  const item = [];
+
+  handleButton = () => {
+    // const items = this.state.items.filter(item => item.id !== itemId);
+    // this.setState({ items: items });
+    alert("Button clicked");
+  };
+
   return (
-    <div>
+    <div className="my-order">
       <TableNumber />
       <Grid doubling columns={2} padded>
-        {menuItems.map(item => (
-          <OrderCard item={item} key={item.name} />
+        {menu.map(item => (
+          <Grid.Column>
+            <OrderCard item={item} key={item.name} />
+          </Grid.Column>
         ))}
       </Grid>
       <div className="total">
@@ -32,12 +44,25 @@ const MyOrder = () => {
         </div>
       </div>
       <div className="btns">
-        <Button className="btn">Send To Kitchen</Button>
-        <Button className="btn">Get My Bill</Button>
+        <Button className="btn" onClick={handleButton}>
+          Send To Kitchen
+        </Button>
+        <Button className="btn" onClick={handleButton}>
+          Get My Bill
+        </Button>
       </div>
       <NavBar />
     </div>
   );
 };
 
-export default MyOrder;
+export default withTracker(() => {
+  //subscribe the 'menu' collection from mongodb
+  Meteor.subscribe("menu");
+  const menu = Menu.find({}).fetch();
+
+  return {
+    //return an object
+    menu
+  };
+})(MyOrder); //send the object to MyOrder as props
