@@ -7,3 +7,10 @@
   background-color: #e3d8cd;
   padding: 0 2rem;
 }
+.kitHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.timeNow {
+  margin-top: 0;
+}

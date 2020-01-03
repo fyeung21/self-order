@@ -11,9 +11,26 @@ const Kitchen = () => {
 
     today = mm + '/' + dd + '/' + yyyy;
 
+
+    var currentTime = document.getElementById('currentTime');
+
+    function time() {
+        var d = new Date();
+        var m = d.getMinutes();
+        var h = d.getHours();
+
+        currentTime.textContent = h + ":" + m;
+    }
+
+    setInterval(time, 1000);
+
+
     return (
         <div className="kitchenBackground">
-            <h1>{today}</h1>
+            <div className="kitHeader">
+                <h1>{today}</h1>
+                <h1 id="currentTime" className="timeNow"></h1>
+            </div>
             <Grid columns={3} relaxed className="test">
                 <Grid.Column className="kitchenGrid">
                     <KitchenOrder />
