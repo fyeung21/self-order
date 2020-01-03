@@ -1,8 +1,9 @@
 .kitchenBackground {
-  background-color: darkgrey;
+  background-color: #7a7976;
 }
 .column.kitchenGrid {
   margin: 3rem 2rem;
   border: 1px solid black;
+  background-color: #e3d8cd;
   padding: 0 2rem;
 }

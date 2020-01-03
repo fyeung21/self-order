@@ -9,9 +9,9 @@ import TableContextProvider from './src/contexts/TableContextProvider';
 import OrderIdContextProvider from './src/contexts/OrderIdContextProvider';
 
 const App = () => {
-  return(
+  return (
     <BrowserRouter>
-      <Container style={{ margin: 20 }}>
+      <Container style={{ margin: "0px 20px" }}>
         <TableContextProvider>
           <OrderIdContextProvider>
             {renderRoutes()}
