@@ -1,10 +1,28 @@
 
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useContext} from 'react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
+import { OrderIdContext } from "../../contexts/OrderIdContextProvider"
+import { GlobalOrders } from '/imports/api/collections/globalOrders';
+
 import "./itemOrderStyle.css"
 
 const ItemOrderForm = ({item, modalOpen}) => {
-const [qty, setQty] = useState(0)
+
+  const orderId = useContext(OrderIdContext).getOrderId
+  const [qty, setQty] = useState(0)
+
+  const addItemToOrder = () => {
+    console.log('run')
+    Meteor.call('globalOrders.insertItem', item, orderId, (err, res) => {
+      if (err) {
+        alert(err)
+      } else {
+        // success!
+      }
+    })
+  }
 
   const handlePlusQty = () => {
     let counter = qty
@@ -53,14 +71,23 @@ const [qty, setQty] = useState(0)
           Close
         </Button>
         <Button
+          content="Add to order"
           positive
           icon='checkmark'
           labelPosition='right'
-          content="Add to order"
-          onClick={this.close}
+          onClick={addItemToOrder}
         />
       </Modal.Actions>
     </Fragment>
   )
 }
-export default ItemOrderForm;
+
+//withTracker tacks changes in database
+export default withTracker(() => {
+  //subscribe the 'globalOrders' collection from mongodb
+  Meteor.subscribe('globalOrders')
+  const globalOrders = GlobalOrders.find().fetch()
+  return { //return an object
+    globalOrders
+  }
+})(ItemOrderForm) //send the object to MenuConatiner as props
