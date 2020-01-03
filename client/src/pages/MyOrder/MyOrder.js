@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import OrderCard from "../../components/OrderCard";
-import TableNumber from "../../components/TableNumber";
+import TableNumber from "../../components/TableNumber/TableNumber";
 import {
   Button,
   Form,

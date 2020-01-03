@@ -1,3 +1,3 @@
-import TableNumber from "./TableNumber.js"
+import TableNumber from './TableNumber'
 
-export default TableNumber;
+export default TableNumber
