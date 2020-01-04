@@ -35,9 +35,6 @@ const ItemOrderForm = ({item, modalOpen}) => {
       setthisItem({...thisItem, "qty" : counter})
       }
     }
-  const handleClose = () => {
-    setVisible(false)
-  }
 
   //get Qty when component will mount
   useEffect(()=>{

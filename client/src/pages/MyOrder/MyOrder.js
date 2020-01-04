@@ -39,6 +39,11 @@ const MyOrder = ( {order} ) => {
     alert("Button clicked");
   };
 
+  const onDelete = ( _id ) => {
+    console.log('delete clicked:  ' + _id)
+    Meteor.call('globalOrders.deleteItems', _id, orderId)
+  }
+  
   const subTotal = () => {
     // console.log("@@" + JSON.stringify(currentOrder))
     if (items != null){
@@ -60,7 +65,7 @@ const MyOrder = ( {order} ) => {
       <Grid doubling columns={2} padded>
         {(items !== null) ? items.map((item, index) => (
           <Grid.Column>
-            <OrderCard item={item} key={index} />
+            <OrderCard item={item} key={index} onDelete={onDelete}/>
           </Grid.Column>
         )) : <h2>Loading...</h2>}
       </Grid>
@@ -95,4 +100,4 @@ export default withTracker(() => {
   return { //return an object
     order
   }
-})(MyOrder) //send the object to MenuConatiner as props
+})(MyOrder) //send the object as props

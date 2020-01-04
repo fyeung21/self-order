@@ -4,6 +4,21 @@ import { Meteor } from 'meteor/meteor';
 //this method save new items into an order from ItemOrderForm.js
 //the order id is given after customer has logged in from the Welcome page
 Meteor.methods({
+    'globalOrders.deleteItems': function(_id, orderId){
+      orderId = parseInt(orderId)
+      console.log("##"+ _id +'&& ' + orderId)
+      // GlobalOrders.remove({"orderId": orderId}, {"_id" : _id})
+      GlobalOrders.update(
+        {'orderId': orderId}, 
+        { $pull: { "items" : { "_id": _id } } },
+    false,
+    true 
+    );
+    }
+  }
+)
+
+Meteor.methods({
   'globalOrders.insertItem': function(item, orderId) {
     orderId = parseInt(orderId) //dunno why orderId became a string. make it back to an integer
     console.log('globalOrders.insertItem' + JSON.stringify(orderId))
@@ -34,11 +49,11 @@ Meteor.methods({
     const checkItem = GlobalOrders.find({
       "orderId": orderId, items: { $elemMatch: {"_id": item._id } } 
     }).fetch()
-      // console.log('!!added' + JSON.stringify( getQty))
-    if (checkItem[0].items.length == 0){
-      console.log('item not added')
+    //qty is 1 when there is no item
+    if (checkItem.length == 0){ 
       return 1
     }
+    //update qty number for each item when the edit modal is opened
     if (checkItem){
       for (let i in checkItem[0].items) {
         if (checkItem[0].items[i]._id == item._id) {
@@ -54,9 +69,7 @@ Meteor.methods({
     orderId = parseInt(orderId)
     const CurrentOrder = GlobalOrders.find(
       {"orderId": orderId}).fetch()
-      // console.log('!!added' + JSON.stringify( getQty))
     if (CurrentOrder.length == 0){
-      console.log('item not found')
     }
     if (CurrentOrder){
       for (let i in CurrentOrder[0].items) {

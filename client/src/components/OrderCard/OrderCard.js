@@ -15,7 +15,7 @@ import "./styles.css";
 import ItemOrderForm from '../ItemOrderForm/';
 
 
-const OrderCard = ({ item }) => {
+const OrderCard = ({ item , onDelete }) => {
 
   handleDelete = itemId => {
     // const items = this.state.items.filter(item => item.id !== itemId);
@@ -69,9 +69,10 @@ const OrderCard = ({ item }) => {
               icon="trash"
               size="small"
               color="red"
-              onClick={this.handleDelete}
+              onClick={()=>{onDelete(item._id)}}
+              //send a callback to the parent as a props 
+              //because the delete function is located inside the parent
             >
-              {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
             </Button>
 
             <Modal dimmer='blurring' open={modalOpen} trigger={
