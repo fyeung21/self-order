@@ -20,7 +20,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 1
+    "sortingIndex" : 1,
+    "qty" : 1
 },
 {
     "name": "Steamed Soup Dumplings",
@@ -31,7 +32,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-dumplings-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 2
+    "sortingIndex" : 2,
+    "qty" : 1
 
 },
 {
@@ -43,7 +45,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-pork-siu-mai-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 3
+    "sortingIndex" : 3,
+    "qty" : 1
 }, 
 {
     "name": "Steamed Pork Ribs",
@@ -54,7 +57,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-ribs-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 4
+    "sortingIndex" : 4,
+    "qty" : 1
 },   
 {
     "name": "Steamed Chicken Feet",
@@ -65,7 +69,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-chicken-feet-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 5
+    "sortingIndex" : 5,
+    "qty" : 1
 },   
 {
     "name": "Sticky Rice in Lotus Leaf",
@@ -76,7 +81,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-sticky-rice-in-lotus-leaf-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 6
+    "sortingIndex" : 6,
+    "qty" : 1
 },     
 {
     "name": "Steamed Pork Buns",
@@ -87,7 +93,8 @@ const items = [
     "imgurl" : "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-steamed-pork-buns-thumb.jpg",
     "featured" : false,
     "activation" : true,
-    "sortingIndex" : 7
+    "sortingIndex" : 7,
+    "qty" : 1
 }
 ]
 Meteor.startup(() => {

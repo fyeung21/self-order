@@ -25,7 +25,7 @@ const Welcome = () => {
           reject(console.log(error))
           // handle error
         }
-        else {
+        else { //success
           console.log('Current order ID?: ' + result);
           resolve(result) 
           history.push("./Menu")

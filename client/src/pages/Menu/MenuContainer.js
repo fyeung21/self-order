@@ -26,7 +26,6 @@ const addItem = () => {
                     <Item item={item} key={item.name} />
                 ))}
             </Grid>
-            <Button onClick={addItem}>add an item</Button>
             <br />
             <br />
             <br />
