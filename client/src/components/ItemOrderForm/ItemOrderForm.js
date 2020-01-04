@@ -1,5 +1,5 @@
 
-import React, {Fragment, useState, useContext} from 'react';
+import React, {Fragment, useState, useContext, useEffect} from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
@@ -11,11 +11,11 @@ import "./itemOrderStyle.css"
 const ItemOrderForm = ({item, modalOpen}) => {
 
   const orderId = useContext(OrderIdContext).getOrderId
-  const [qty, setQty] = useState(0)
+  const [thisItem, setthisItem] = useState(item)
 
   const addItemToOrder = () => {
     console.log('run')
-    Meteor.call('globalOrders.insertItem', item, orderId, (err, res) => {
+    Meteor.call('globalOrders.insertItem', thisItem, orderId, (err, res) => {
       if (err) {
         alert(err)
       } else {
@@ -25,21 +25,38 @@ const ItemOrderForm = ({item, modalOpen}) => {
   }
 
   const handlePlusQty = () => {
-    let counter = qty
-    counter++
-    setQty(counter)
+    let counter = thisItem.qty
+    counter = counter + 1
+    setthisItem({...thisItem, "qty" : counter})
+    // console.log(JSON.stringify(thisItem))
+    // item.qty = item.qty
   }
   const handleMinusQty = () => {
-    let counter = qty
+    let counter = item.qty
     
     if(counter > 0) {
         counter--
-        setQty(counter)
+        setthisItem(counter)
+        // item.qty = qty
       }
     }
   const handleClose = () => {
     setVisible(false)
   }
+
+  //get Qty when component will mount
+  useEffect(()=>{
+    Meteor.call('globalOrders.getQty',  thisItem, orderId, (err, res) => {
+      if (err) {
+        alert(err)
+      } else {
+        console.log("getQty " + res)
+        setthisItem({...thisItem, "qty" : res})
+        // success!
+      }
+    })
+  },[])
+
     return (
       <Fragment>
       <Modal.Header>Add to order</Modal.Header>
@@ -59,7 +76,9 @@ const ItemOrderForm = ({item, modalOpen}) => {
             <div>
               <Button circular icon='minus' onClick={handleMinusQty} />
             </div>
-            <h2 className="qtyNum">{qty}</h2>
+            <h2 className="qtyNum">
+            {thisItem.qty}
+            </h2>
             <div>
               <Button circular icon='plus' onClick={handlePlusQty} />
             </div>

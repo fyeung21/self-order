@@ -13,7 +13,7 @@
 }
 
 .image-card {
-  width: 60px;
+  max-width: 60px;
   width: 25%;
   margin-left: 0;
   height: 70px;

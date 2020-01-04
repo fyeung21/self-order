@@ -21,7 +21,8 @@ const AddItemForm = ( {closeModal, sortingIndex} ) => {
     description:'', 
     imgurl:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/768px-No_image_available.svg.png',
     sortingIndex: sortingIndex + 1,
-    activation: true
+    activation: true,
+    qty: 1
     }
   )
   let { name, price, pcs, description, imgurl} = state

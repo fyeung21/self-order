@@ -13,9 +13,9 @@ Meteor.methods({
       //if table number is not found, insert a new order number.
       //Find the lastest order Id in GlobalOrders
       //*for Meteor, we need to put query and options in variables.
-      let newOrderId = null
+      let newOrderId = 0
       const query = {} //get everything
-      const options = {sort: {"_id" : -1}, limit: 1} //sort _id descendingly. only get 1 item from the top
+      const options = {sort: {"orderId" : -1}, limit: 1} //sort _id descendingly. only get 1 item from the top
       const latestOrder = GlobalOrders.find(query, options).fetch() //this is the query
 
       //if there is nothing in GlobalOrders
@@ -23,11 +23,16 @@ Meteor.methods({
         newOrderId = 1
       }
       //fetch return an array. new order Id = lastest order id  + 1 
-      else {
-        newOrderId = latestOrder[0].orderId + 1
+      if (latestOrder.length > 0){
+        newOrderId = latestOrder[0].orderId
+        newOrderId = newOrderId + 1
+        console.log('!newOrderId' + newOrderId)
       }
-      GlobalOrders.insert({"orderId" : newOrderId, tableNumber, "items":[]})
-      ActiveTables.insert({"orderId" : newOrderId, tableNumber})
+      GlobalOrders.insert({"orderId" : newOrderId, tableNumber, "items":[]},
+       function(err, objectId){
+        console.log(objectId)
+       })
+      ActiveTables.insert({"orderId" : newOrderId, tableNumber})  
       console.log("New orderId: " + newOrderId)
       return newOrderId
     }

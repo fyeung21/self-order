@@ -13,20 +13,6 @@ import {
 import "./styles.css";
 
 const OrderCard = ({ item }) => {
-  state = {
-    items: [
-      {
-        name: "1111Shrimp Dumplings",
-        price: 7,
-        pcs: 4,
-        description: "Whole shrimp in a translucent wrapper.",
-        cataglory: " Steamed",
-        imgurl:
-          "http://www.dimsumcentral.com/wp-content/uploads/2016/01/steamed-shrimp-dumplings-thumb.jpg",
-        featured: false
-      }
-    ]
-  };
 
   handleDelete = itemId => {
     // const items = this.state.items.filter(item => item.id !== itemId);
@@ -35,20 +21,25 @@ const OrderCard = ({ item }) => {
   };
   const [qty, setQty] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [thisItem, setthisItem] = useState(item)
+
 
   const handlePlusQty = () => {
-    let counter = qty;
-    counter++;
-    setQty(counter);
-  };
+    let counter = thisItem.qty
+    counter = counter + 1
+    setthisItem({...thisItem, "qty" : counter})
+    // console.log(JSON.stringify(thisItem))
+    // item.qty = item.qty
+  }
   const handleMinusQty = () => {
-    let counter = qty;
-
-    if (counter > 0) {
-      counter--;
-      setQty(counter);
+    let counter = item.qty
+    
+    if(counter > 0) {
+        counter--
+        setthisItem(counter)
+        // item.qty = qty
+      }
     }
-  };
 
   // const OrderCard = () => {
   return (
@@ -63,34 +54,25 @@ const OrderCard = ({ item }) => {
           />
           <Card.Header className="header-my-order">
             {item.name}
-            <Card.Header>3 pcs</Card.Header>
-            <Card.Meta>Qty:{qty}</Card.Meta>
-            <div className="qty2">
-              <div>
-                <Button
-                  circular
-                  icon="minus"
-                  onClick={handleMinusQty}
-                  className="add-btn"
-                />
-              </div>
-              <h2 className="qtyNum1">{qty}</h2>
-              <div>
-                <Button
-                  circular
-                  icon="plus"
-                  onClick={handlePlusQty}
-                  className="add-btn"
-                />
-              </div>
-            </div>
+            <Card.Header>/{item.pcs}pcs</Card.Header>
+            <Card.Meta>Qty:{item.qty}</Card.Meta>
+            <Card.Meta>Price: ${item.price * item.qty}</Card.Meta>
           </Card.Header>
           <div>
             <Button
-              basic
-              icon="trash alternate outline"
-              size="large"
+              
+              icon="trash"
+              size="middle"
               color="red"
+              onClick={this.handleDelete}
+            >
+              {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
+            </Button>
+            <Button
+              
+              icon="edit"
+              size="middle"
+              color="green"
               onClick={this.handleDelete}
             >
               {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
