@@ -1,16 +1,21 @@
 .kitchenBackground {
   background-color: #7a7976;
 }
-.column.kitchenGrid {
-  margin: 3rem 2rem;
-  border: 1px solid black;
-  background-color: #e3d8cd;
-  padding: 0 2rem;
-}
 .kitHeader {
   display: flex;
   justify-content: space-between;
 }
 .timeNow {
   margin-top: 0;
+}
+.kitchenFlex {
+  display: flex;
+  overflow-x: scroll;
+  height: 725px;
+}
+.kitOrderCont {
+  margin: 3rem 2rem;
+  border: 1px solid black;
+  background-color: #e3d8cd;
+  padding: 2rem;
 }
