@@ -11,9 +11,13 @@ const KitchenOrder = () => {
         setActive(!active)
     }
 
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+
     const CompleteBtn = () => {
         return (
             <div>
+                <h3>{time}</h3>
                 <Button
                     className="doneBtn"
                     basic
@@ -25,7 +29,6 @@ const KitchenOrder = () => {
                 </Button>
             </div>
         )
-
     }
     const NotDoneBtn = () => {
         return (
@@ -40,7 +43,6 @@ const KitchenOrder = () => {
                 </Button>
             </div>
         )
-
     }
 
     return (
@@ -54,7 +56,6 @@ const KitchenOrder = () => {
                 <KitOrderCard />
                 <KitOrderCard />
             </div>
-            <h3 textalign="center">{"14:40"}</h3> {/* show time when 'done' is pressed */}
             {active ? <CompleteBtn /> : <NotDoneBtn />}
         </div>
     )

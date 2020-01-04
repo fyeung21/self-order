@@ -1,6 +1,7 @@
 import React from 'react';
 import KitchenOrder from '../../components/KitchenOrder';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react';
+import { useHistory } from "react-router-dom";
 import "./styles";
 
 const Kitchen = () => {
@@ -24,12 +25,18 @@ const Kitchen = () => {
 
     setInterval(time, 1000);
 
+    const history = useHistory()
+    const clickHandler4 = () => {
+        history.push('/menucontrol')
+    }
+
 
     return (
         <div className="kitchenBackground">
             <div className="kitHeader">
                 <h1>{today}</h1>
                 <h1 id="currentTime" className="timeNow"></h1>
+                <Button onClick={clickHandler4}><h1>Menu Control</h1></Button>
             </div>
             <Grid columns={3} relaxed className="test">
                 <Grid.Column className="kitchenGrid">
