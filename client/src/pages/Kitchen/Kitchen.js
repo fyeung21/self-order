@@ -38,18 +38,33 @@ const Kitchen = () => {
                 <h1 id="currentTime" className="timeNow"></h1>
                 <Button onClick={clickHandler4}><h1>Menu Control</h1></Button>
             </div>
-            <Grid columns={3} relaxed className="test">
-                <Grid.Column className="kitchenGrid">
+            <div className="kitchenFlex">
+                <div className="kitOrderCont">
                     <KitchenOrder />
-                </Grid.Column>
-                <Grid.Column className="kitchenGrid">
+                </div>
+                <div className="kitOrderCont">
                     <KitchenOrder />
-                </Grid.Column>
-                <Grid.Column className="kitchenGrid">
+                </div>
+                <div className="kitOrderCont">
                     <KitchenOrder />
-                </Grid.Column>
-            </Grid>
-        </div>
+                </div>
+                <div className="kitOrderCont">
+                    <KitchenOrder />
+                </div>
+                <div className="kitOrderCont">
+                    <KitchenOrder />
+                </div>
+                <div className="kitOrderCont">
+                    <KitchenOrder />
+                </div>
+                <div className="kitOrderCont">
+                    <KitchenOrder />
+                </div>
+                <div className="kitOrderCont">
+                    <KitchenOrder />
+                </div>
+            </div>
+        </div >
     );
 };
 export default Kitchen;
