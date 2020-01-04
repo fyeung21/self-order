@@ -8,9 +8,12 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+  Modal
 } from "semantic-ui-react";
 import "./styles.css";
+import ItemOrderForm from '../ItemOrderForm/';
+
 
 const OrderCard = ({ item }) => {
 
@@ -23,6 +26,9 @@ const OrderCard = ({ item }) => {
   const [visible, setVisible] = useState(true);
   const [thisItem, setthisItem] = useState(item)
 
+  const [modalOpen, setModalOpen] = useState(false)
+  const handleClose = () => { setModalOpen(false) }
+  const handleOpen = () => { setModalOpen(true) }
 
   const handlePlusQty = () => {
     let counter = thisItem.qty
@@ -60,23 +66,29 @@ const OrderCard = ({ item }) => {
           </Card.Header>
           <div>
             <Button
-              
               icon="trash"
-              size="middle"
+              size="small"
               color="red"
               onClick={this.handleDelete}
             >
               {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
             </Button>
+
+            <Modal dimmer='blurring' open={modalOpen} trigger={
             <Button
-              
               icon="edit"
-              size="middle"
+              size="small"
               color="green"
-              onClick={this.handleDelete}
+              onClick={handleOpen}
             >
               {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
             </Button>
+            }>
+              <ItemOrderForm 
+                item={item} 
+                modalOpen={handleClose} 
+            />
+            </Modal>
           </div>
         </div>
       </Card.Content>

@@ -25,7 +25,6 @@ const ItemCard = ({ item }) => {
             <ItemOrderForm 
                 item={item} 
                 modalOpen={handleClose} 
-
             />
         </Modal>
     )

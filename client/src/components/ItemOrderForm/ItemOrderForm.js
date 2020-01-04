@@ -14,7 +14,6 @@ const ItemOrderForm = ({item, modalOpen}) => {
   const [thisItem, setthisItem] = useState(item)
 
   const addItemToOrder = () => {
-    console.log('run')
     Meteor.call('globalOrders.insertItem', thisItem, orderId, (err, res) => {
       if (err) {
         alert(err)
@@ -28,16 +27,12 @@ const ItemOrderForm = ({item, modalOpen}) => {
     let counter = thisItem.qty
     counter = counter + 1
     setthisItem({...thisItem, "qty" : counter})
-    // console.log(JSON.stringify(thisItem))
-    // item.qty = item.qty
   }
   const handleMinusQty = () => {
-    let counter = item.qty
-    
+    let counter = thisItem.qty
     if(counter > 0) {
-        counter--
-        setthisItem(counter)
-        // item.qty = qty
+      counter = counter - 1
+      setthisItem({...thisItem, "qty" : counter})
       }
     }
   const handleClose = () => {
@@ -94,7 +89,11 @@ const ItemOrderForm = ({item, modalOpen}) => {
           positive
           icon='checkmark'
           labelPosition='right'
-          onClick={addItemToOrder}
+          onClick={()=>{
+            addItemToOrder()
+            modalOpen()
+          }
+        }
         />
       </Modal.Actions>
     </Fragment>
