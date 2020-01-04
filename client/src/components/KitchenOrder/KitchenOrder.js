@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import "./kitchenStyles.css";
 
 const KitchenOrder = () => {
+    const [active, setActive] = useState(false)
+
+    handleClick2 = () => {
+        setActive(!active)
+    }
+
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+
+    const CompleteBtn = () => {
+        return (
+            <div>
+                <h3>{time}</h3>
+                <Button
+                    className="doneBtn"
+                    basic
+                    size="large"
+                    color='grey'
+                    toggle active={active}
+                    onClick={this.handleClick2} >
+                    Complete
+                </Button>
+            </div>
+        )
+    }
+    const NotDoneBtn = () => {
+        return (
+            <div>
+                <Button
+                    className="doneBtn"
+                    size="large"
+                    color='yellow'
+                    toggle active={active}
+                    onClick={this.handleClick2} >
+                    Done
+                </Button>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -17,8 +56,7 @@ const KitchenOrder = () => {
                 <KitOrderCard />
                 <KitOrderCard />
             </div>
-            <h3 textalign="center">{"14:40"}</h3> {/* show time when 'done' is pressed */}
-            <Button size="large" basic color="red" className="doneBtn">Done</Button>
+            {active ? <CompleteBtn /> : <NotDoneBtn />}
         </div>
     )
 }
