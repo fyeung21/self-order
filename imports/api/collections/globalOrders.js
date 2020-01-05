@@ -42,45 +42,12 @@ Meteor.methods({
 Meteor.methods({
   'globalOrders.insertItem': function(item, orderId) {
     orderId = parseInt(orderId) //dunno why orderId became a string. make it back to an integer
-    console.log('globalOrders.insertItem' + JSON.stringify(orderId))
-    //check and see if the item is already added
-    //
     const item_id = Math.floor(Math.random() * 10000000)//random number as item_id
-    item.item_id = item_id
-    const checkItem = GlobalOrders.find({
-      "orderId": orderId, items: { $elemMatch: {"_id": item._id } } 
-    }).fetch()
-    console.log('!checkItem ' + JSON.stringify(checkItem))
-    // if nitem is not found, it return an empty array
-    if (checkItem.length == 0){
-    //push the item into the array
+    item.item_id = item_id //insert item_id to all new items
         GlobalOrders.update(
           {"orderId" : orderId}, 
           { $push: {items: item} }
       )
-    }
-    // item is found
-    if (checkItem.length > 0 ){
-      //if item has already inserted and not sent to kitchen yet, just update the item qty 
-      console.log('item is found')
-      for (let i in checkItem[0].items){
-        // if (checkItem[0].items[i].sentToKitchen == false && 
-        //       checkItem[0].items[i]._id == item._id) {
-        //         console.log('TRUE??')
-        //         GlobalOrders.update(
-        //           {"orderId" : orderId, "items._id" : item._id}, 
-        //           { $set: {"items.$.qty" : item.qty} }
-        //       )
-        //   }
-        if (checkItem[0].items[i].sentToKitchen == true && 
-            checkItem[0].items[i]._id == item._id) {
-              GlobalOrders.update(
-                {"orderId" : orderId}, 
-                { $push: {items: item} }
-            )
-          }
-        }
-      }
     }
 })
 

@@ -2,7 +2,7 @@
 import React, {Fragment, useState, useContext, useEffect} from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Button, Header, Image, Modal, Transition} from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon} from 'semantic-ui-react'
 import { OrderIdContext } from "../../contexts/OrderIdContextProvider"
 import { GlobalOrders } from '/imports/api/collections/globalOrders';
 
@@ -40,7 +40,7 @@ const ItemOrderForm = ({item, modalOpen}) => {
   }
   const handleMinusQty = () => {
     let counter = thisItem.qty
-    if(counter > 0) {
+    if(counter > 1) {
       counter = counter - 1
       setthisItem({...thisItem, "qty" : counter})
       }
@@ -102,7 +102,8 @@ const ItemOrderForm = ({item, modalOpen}) => {
           <p>
             {item.description}
           </p>
-            {thisItem.item_id ? <p style={{color: "red", display: "block"}}>This item has been added to shopping cart.</p> : null}
+            {thisItem.item_id ? <p style={{color: "green", display: "block"}}>
+              <Icon name="check circle" />This item has been added to shopping cart.</p> : null}
           <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
           <div className="qty">
             <div>

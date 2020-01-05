@@ -30,24 +30,36 @@ const MyOrder = ( {order} ) => {
   orderId = useContext(OrderIdContext).getOrderId
   Session.set('orderId', orderId) //session is for passing value to withTracker
 
-  // ** rearrange all the items and put them in a new array structure
-  // [ {time : 'date string',
-  //   {items: [array of items]} ] **\
-  let newItemsArr = []
+  // *** Rearrange and group all the items by order time ***
+  // 1 .create an array with all the orderTimes, then remove diplicate ones.
+  let timesArr = []
+  let groupedItemsByDate = []
+  let sameTimedItems = []
+
   if (order[0]){
     items = order[0].items
-    for (let i in items){
-      newItemsArr.push(items[i].orderTime)
-    }
-    let unique = [...new Set(newItemsArr)];//remove all duplicates
-    console.log(unique)
-}
-
-  handleButton = () => {
-    // const items = this.state.items.filter(item => item.id !== itemId);
-    // this.setState({ items: items });
-    alert("Button clicked");
-  };
+    items.map((item)=>{
+      timesArr.unshift(item.orderTime)
+    })
+    timesArr = [...new Set(timesArr)];//remove all duplicates
+  }
+  //  2. put items in a new array as the example below:
+  //  [ {time : 'date string',
+  //   {sameTimedItems: [array of items]} ]  
+    timesArr.map(time => {
+      console.log(time)
+      sameTimedItems = []
+      items.map(item => {
+        console.log(item.orderTime)
+        if (item.orderTime === time){
+          console.log(9)
+          sameTimedItems.unshift(item)
+      }
+    })
+    { time } //time.time = time
+    groupedItemsByDate.unshift({time, sameTimedItems})
+  })
+  console.log(groupedItemsByDate)
 
   const onSendToKitchen = () => {
     Meteor.call('globalOrders.insertTimestamps', orderId) 
@@ -94,7 +106,7 @@ const MyOrder = ( {order} ) => {
         <Button className="btn" onClick={onSendToKitchen}>
           Send To Kitchen
         </Button>
-        <Button className="btn" onClick={handleButton}>
+        <Button className="btn">
           Get My Bill
         </Button>
       </div>
