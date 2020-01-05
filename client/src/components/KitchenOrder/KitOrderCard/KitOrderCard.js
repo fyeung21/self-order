@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import "./../kitchenStyles.css";
 
-const KitOrderCard = () => {
+const KitOrderCard = ({item}) => {
     const [active, setActive] = useState(false)
 
     handleClick = () => {
@@ -46,8 +46,8 @@ const KitOrderCard = () => {
             <Card fluid className="kitOrderCard">
                 <Card.Content>
                     {active ? <OutBtn /> : <ReadyBtn />}
-                    <Card.Header>{"shrimp dumplings"}</Card.Header>
-                    <Card.Meta>Qty: {"3"}</Card.Meta>
+                    <Card.Header>{item.name}</Card.Header>
+                    <Card.Meta>Qty: {item.qty}</Card.Meta>
                 </Card.Content>
             </Card>
         </div>

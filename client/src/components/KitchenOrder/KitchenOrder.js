@@ -4,7 +4,7 @@ import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import "./kitchenStyles.css";
 
-const KitchenOrder = () => {
+const KitchenOrder = ( { order }) => {
     const [active, setActive] = useState(false)
 
     handleClick2 = () => {
@@ -49,12 +49,14 @@ const KitchenOrder = () => {
         <div>
             <div className="header">
                 <h3>{"14:20"}</h3> {/* time created */}
-                <TableNumber />
+                <h2>Table#: {order.tableNumber}</h2>
             </div>
             <div className="kitCard">
-                <KitOrderCard />
-                <KitOrderCard />
-                <KitOrderCard />
+                {order.items.map((item)=>{
+                    return (
+                        <KitOrderCard item={item} key={item._id}/>
+                    )
+                })}
             </div>
             {active ? <CompleteBtn /> : <NotDoneBtn />}
         </div>

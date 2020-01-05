@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .ui.card.kitCard {
   display: block;

@@ -23,6 +23,16 @@ const ItemOrderForm = ({item, modalOpen}) => {
     })
   }
 
+  const editItem = () => {
+    Meteor.call('globalOrders.editItem', thisItem, orderId, (err, res) => {
+      if (err) {
+        alert(err)
+      } else {
+        // success!
+      }
+    })
+  }
+
   const handlePlusQty = () => {
     let counter = thisItem.qty
     counter = counter + 1
@@ -35,19 +45,48 @@ const ItemOrderForm = ({item, modalOpen}) => {
       setthisItem({...thisItem, "qty" : counter})
       }
     }
-
+    let counter = 0
   //get Qty when component will mount
   useEffect(()=>{
-    Meteor.call('globalOrders.getQty',  thisItem, orderId, (err, res) => {
-      if (err) {
+    for (i = 0; i < 2; i++){
+      counter = counter + 1
+    }
+    //find if the item is already added to cart. if so, add button will become edit button
+    //if it is sent to the kitchen, the same item can be added again
+    Meteor.call('globalOrders.checkCart', thisItem, orderId, (err, res) => {
+      if (err) { 
         alert(err)
       } else {
-        console.log("getQty " + res)
-        setthisItem({...thisItem, "qty" : res})
-        // success!
+        console.log(res)
+        for (let i in res){
+          for (let j in res[i].items){
+            if (res[i].items[j].item_id && res[i].items[j].sentToKitchen == false){
+              if (item._id == res[i].items[j]._id){
+                console.log('HELLO'+ JSON.stringify(res[i].items[j] ))
+              setthisItem(res[i].items[j])
+            }
+          } else {
+            setthisItem(item)
+          }
+          }
+        }
       }
     })
-  },[])
+
+    // Meteor.call('globalOrders.getQty',  thisItem, orderId, (err, res) => {
+    //   if (err) {
+    //     alert(err)
+    //   } else {
+    //     console.log("getQty " + res)
+    //     if (res == undefined){
+    //       setthisItem({...thisItem, "qty" : 1})
+    //     }
+    //     else {
+    //     setthisItem({...thisItem, "qty" : res})
+    //   }
+    //   }
+    // })
+  },[counter])
 
     return (
       <Fragment>
@@ -63,6 +102,7 @@ const ItemOrderForm = ({item, modalOpen}) => {
           <p>
             {item.description}
           </p>
+            {thisItem.item_id ? <p style={{color: "red", display: "block"}}>This item has been added to shopping cart.</p> : null}
           <Header>${item.price} / <span className="pcs">{item.pcs}pcs</span></Header>
           <div className="qty">
             <div>
@@ -74,6 +114,7 @@ const ItemOrderForm = ({item, modalOpen}) => {
             <div>
               <Button circular icon='plus' onClick={handlePlusQty} />
             </div>
+            <br/>
           </div>
         </Modal.Description>
       </Modal.Content>
@@ -81,6 +122,19 @@ const ItemOrderForm = ({item, modalOpen}) => {
         <Button color='black' onClick={modalOpen}>
           Close
         </Button>
+        {thisItem.item_id? 
+        <Button
+          content="Edit item"
+          color="blue"
+          icon='edit'
+          labelPosition='right'
+          onClick={()=>{
+            editItem()
+            modalOpen()
+          }
+        }
+        />
+        :
         <Button
           content="Add to order"
           positive
@@ -92,6 +146,7 @@ const ItemOrderForm = ({item, modalOpen}) => {
           }
         }
         />
+      }
       </Modal.Actions>
     </Fragment>
   )

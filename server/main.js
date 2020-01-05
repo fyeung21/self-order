@@ -21,7 +21,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 1,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 },
 {
     "name": "Steamed Soup Dumplings",
@@ -33,8 +36,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 2,
-    "qty" : 1
-
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 },
 {
     "name": "Pork Siu Mai",
@@ -46,7 +51,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 3,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 }, 
 {
     "name": "Steamed Pork Ribs",
@@ -58,7 +66,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 4,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 },   
 {
     "name": "Steamed Chicken Feet",
@@ -70,7 +81,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 5,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 },   
 {
     "name": "Sticky Rice in Lotus Leaf",
@@ -82,7 +96,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 6,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 },     
 {
     "name": "Steamed Pork Buns",
@@ -94,7 +111,10 @@ const items = [
     "featured" : false,
     "activation" : true,
     "sortingIndex" : 7,
-    "qty" : 1
+    "qty" : 1,
+    "sentToKitchen" : false,
+    "status" : "proccessing",
+    "addedToCart" : false
 }
 ]
 Meteor.startup(() => {

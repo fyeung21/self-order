@@ -54,8 +54,6 @@ const OrderCard = ({ item , onDelete }) => {
         <div className="content1">
           <Image
             className="image-card"
-            // floated="right"
-            // size="small"
             src={item.imgurl}
           />
           <Card.Header className="header-my-order">
@@ -63,7 +61,11 @@ const OrderCard = ({ item , onDelete }) => {
             <Card.Header>/{item.pcs}pcs</Card.Header>
             <Card.Meta>Qty:{item.qty}</Card.Meta>
             <Card.Meta>Price: ${item.price * item.qty}</Card.Meta>
+            {!item.orderTime? null : 
+            <Card.Meta>Sent to Kitchen: {item.orderTime}</Card.Meta>}
           </Card.Header>
+
+        {item.orderTime ? null :
           <div>
             <Button
               icon="trash"
@@ -79,7 +81,7 @@ const OrderCard = ({ item , onDelete }) => {
             <Button
               icon="edit"
               size="small"
-              color="green"
+              color="blue"
               onClick={handleOpen}
             >
               {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
@@ -91,6 +93,7 @@ const OrderCard = ({ item , onDelete }) => {
             />
             </Modal>
           </div>
+        }
         </div>
       </Card.Content>
     </Card>
