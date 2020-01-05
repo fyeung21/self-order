@@ -7,7 +7,7 @@ import "./kitchenStyles.css";
 const KitchenOrder = () => {
     const [active, setActive] = useState(false)
 
-    handleClick2 = () => {
+    doneClick = () => {
         setActive(!active)
     }
 
@@ -24,7 +24,7 @@ const KitchenOrder = () => {
                     size="large"
                     color='grey'
                     toggle active={active}
-                    onClick={this.handleClick2} >
+                    onClick={this.doneClick} >
                     Complete
                 </Button>
             </div>
@@ -38,7 +38,7 @@ const KitchenOrder = () => {
                     size="large"
                     color='yellow'
                     toggle active={active}
-                    onClick={this.handleClick2} >
+                    onClick={this.doneClick} >
                     Done
                 </Button>
             </div>
