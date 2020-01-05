@@ -25,11 +25,11 @@ Meteor.methods({
 })
 
 Meteor.methods({
-    'globalOrders.deleteItems': function(_id, orderId){
+    'globalOrders.deleteItems': function(item_id, orderId){
       orderId = parseInt(orderId)
       GlobalOrders.update(
         {'orderId': orderId}, 
-        { $pull: { "items" : { "_id": _id } } },
+        { $pull: { "items" : { "item_id": item_id } } },
     false,
     true 
     );

@@ -53,8 +53,8 @@ const MyOrder = ( {order} ) => {
     Meteor.call('globalOrders.insertTimestamps', orderId) 
   }
 
-  const onDelete = ( _id ) => {
-    Meteor.call('globalOrders.deleteItems', _id, orderId)
+  const onDelete = ( item_id ) => {
+    Meteor.call('globalOrders.deleteItems', item_id, orderId)
   }
   
   const subTotal = () => {

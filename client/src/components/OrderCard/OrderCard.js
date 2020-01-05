@@ -71,7 +71,7 @@ const OrderCard = ({ item , onDelete }) => {
               icon="trash"
               size="small"
               color="red"
-              onClick={()=>{onDelete(item._id)}}
+              onClick={()=>{onDelete(item.item_id)}}
               //send a callback to the parent as a props 
               //because the delete function is located inside the parent
             >
