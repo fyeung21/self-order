@@ -30,7 +30,7 @@ const KitchenOrder = () => {
             </div>
         )
     }
-    const NotDoneBtn = () => {
+    const IncompleteBtn = () => {
         return (
             <div>
                 <Button
@@ -56,7 +56,7 @@ const KitchenOrder = () => {
                 <KitOrderCard />
                 <KitOrderCard />
             </div>
-            {active ? <CompleteBtn /> : <NotDoneBtn />}
+            {active ? <CompleteBtn /> : <IncompleteBtn />}
         </div>
     )
 }

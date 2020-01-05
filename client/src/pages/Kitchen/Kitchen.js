@@ -1,6 +1,6 @@
 import React from 'react';
 import KitchenOrder from '../../components/KitchenOrder';
-import { Grid, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 import "./styles";
 
@@ -23,7 +23,7 @@ const Kitchen = () => {
         currentTime.textContent = h + ":" + m;
     }
 
-    setInterval(time, 1000);
+    setInterval(time, 0);
 
     const history = useHistory()
     const goToMenu = () => {
@@ -36,7 +36,7 @@ const Kitchen = () => {
             <div className="kitHeader">
                 <h1>{today}</h1>
                 <h1 id="currentTime" className="timeNow"></h1>
-                <Button onClick={goToMenu}><h1>Menu Control</h1></Button>
+                <Button onClick={goToMenu}><h3>Menu Control</h3></Button>
             </div>
             <div className="kitchenFlex">
                 <div className="kitOrderCont">
