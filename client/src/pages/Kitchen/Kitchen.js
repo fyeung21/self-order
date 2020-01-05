@@ -27,7 +27,7 @@ const Kitchen = () => {
 
     const history = useHistory()
     const clickHandler4 = () => {
-        history.push('/menucontrol')
+        history.push('/menu-control')
     }
 
 
