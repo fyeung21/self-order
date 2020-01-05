@@ -12,8 +12,10 @@ Meteor.methods({
     const currentItems = GlobalOrders.find({"orderId": orderId}).fetch()
     const items = currentItems[0].items
     items.map(item => {
+        if (!item.orderTime) {
         item.orderTime = timestamp
         item.sentToKitchen = true
+      }
     })
     GlobalOrders.update(
       {"orderId" : orderId},
