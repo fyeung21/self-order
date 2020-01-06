@@ -6,7 +6,7 @@ import {
   Item,
   Grid,
   Icon,
-  Image,
+  Modal,
   Message,
   Segment
 } from "semantic-ui-react";
@@ -18,6 +18,7 @@ const menuItems = require("../../pages/Menu/menu.json");
 import { GlobalOrders } from '/imports/api/collections/globalOrders';
 import { Kitchen } from '/imports/api/collections/kitchen';
 import { OrderIdContext } from "../../contexts/OrderIdContextProvider"
+import { TableContext } from "../../contexts/TableContextProvider"
 import { Session } from 'meteor/session'
 
 //run this in terminal meteor add session
@@ -28,6 +29,7 @@ let items = null
 //currect
 const MyOrder = ( {order} ) => {
   orderId = useContext(OrderIdContext).getOrderId
+  const tableNumber = useContext(TableContext).getTableNumber
   Session.set('orderId', orderId) //session is for passing value to withTracker
 
   // *** Rearrange and group all the items by order time ***
@@ -47,19 +49,15 @@ const MyOrder = ( {order} ) => {
   //  [ {time : 'date string',
   //   {sameTimedItems: [array of items]} ]  
     timesArr.map(time => {
-      console.log(time)
       sameTimedItems = []
       items.map(item => {
-        console.log(item.orderTime)
         if (item.orderTime === time){
-          console.log(9)
           sameTimedItems.push(item)
       }
     })
     { time } //time.time = time
     groupedItemsByDate.push({time, sameTimedItems})
   })
-  console.log(groupedItemsByDate)
 
   const onSendToKitchen = () => {
     Meteor.call('globalOrders.insertTimestamps', orderId) 
@@ -109,7 +107,7 @@ const MyOrder = ( {order} ) => {
             </Grid.Column>
 
             <Grid.Column floated='right' width={7}>
-            {(!timedItems.time && index == 0)?
+            {(!timedItems.time)?
                 <Button icon positive onClick={onSendToKitchen}>
                     <Icon name="utensils"/> Send To Kitchen
                 </Button> 
@@ -117,9 +115,57 @@ const MyOrder = ( {order} ) => {
                 null
             }
             {(timedItems.time && index === 0)?
+
+              <Modal size="tiny" closeIcon trigger={
                 <Button icon color="blue">
                   <Icon name="dollar"/>Request the Bill
                 </Button>
+              }>
+                <br></br>
+                <Modal.Header>Recipt for Table#: {tableNumber}</Modal.Header>
+                <Modal.Content>
+                {groupedItemsByDate.map((timedItems, index) => (
+                  <Fragment>
+                    {timedItems.sameTimedItems.map(item => (
+                      <Fragment>
+                        <Grid>
+                          <Grid.Column width={3}>
+                            {item.qty} x 
+                          </Grid.Column>
+                          <Grid.Column width={9}>
+                            {item.name}
+                          </Grid.Column>
+                          <Grid.Column textAlign='right' floated='right' width={4}>
+                            ${(item.price * item.qty).toFixed(2)}
+                          </Grid.Column>
+                        </Grid>
+                      </Fragment>
+                    ))}
+                  </Fragment>
+                ))}
+                <br></br>
+                <hr />
+                <Grid>
+                  <Grid.Column textAlign='right' floated='right' width={10}>
+                    <p>Subtotal:</p>
+                    <p>SGST(5%):</p>
+                    <h3>Total:</h3>
+                  </Grid.Column>
+                  <Grid.Column textAlign='right' floated='right' width={6}>
+                    <p>${subTotal()}</p>
+                    <p>${subTotal()*100*0.05/100}</p>
+                    <h3>${subTotal()*100*1.05/100}</h3>
+                  </Grid.Column>
+                </Grid>
+                <br></br>
+                <Grid>
+                  <Grid.Column textAlign='center'>
+                    Thank you for visiting. Please come again!
+                  </Grid.Column>
+                </Grid>
+                </Modal.Content>
+              </Modal>
+              
                 :
                 null
             }
