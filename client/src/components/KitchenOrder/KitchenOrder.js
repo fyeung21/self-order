@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
+import CancelBtn from './CancelBtn';
 import "./kitchenStyles.css";
 
 const KitchenOrder = () => {
@@ -19,7 +20,7 @@ const KitchenOrder = () => {
             <div>
                 <h3>{time}</h3>
                 <Button
-                    className="doneBtn"
+                    className="btn"
                     basic
                     size="large"
                     color='grey'
@@ -34,7 +35,7 @@ const KitchenOrder = () => {
         return (
             <div>
                 <Button
-                    className="doneBtn"
+                    className="btn"
                     size="large"
                     color='yellow'
                     toggle active={active}
@@ -47,7 +48,7 @@ const KitchenOrder = () => {
 
     return (
         <div>
-            <div className="header">
+            <div className="kitOrderHeader">
                 <h3>{"14:20"}</h3> {/* time created */}
                 <TableNumber />
             </div>
@@ -57,6 +58,7 @@ const KitchenOrder = () => {
                 <KitOrderCard />
             </div>
             {active ? <CompleteBtn /> : <IncompleteBtn />}
+            <CancelBtn />
         </div>
     )
 }

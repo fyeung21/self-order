@@ -17,13 +17,13 @@ const Kitchen = () => {
 
     function time() {
         var d = new Date();
-        var m = d.getMinutes();
-        var h = d.getHours();
+        var m = String(d.getMinutes()).padStart(2, "0");
+        var h = String(d.getHours()).padStart(2, "0");
 
         currentTime.textContent = h + ":" + m;
     }
 
-    setInterval(time, 0);
+    setInterval(time, 100);
 
     const history = useHistory()
     const goToMenu = () => {

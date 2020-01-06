@@ -44,10 +44,12 @@ const KitOrderCard = () => {
     return (
         <div>
             <Card fluid className="kitOrderCard">
-                <Card.Content>
+                <Card.Content className="cardFlex">
+                    <div>
+                        <Card.Header>{"shrimp dumplings"}</Card.Header>
+                        <Card.Meta>Qty: {"3"}</Card.Meta>
+                    </div>
                     {active ? <OutBtn /> : <ReadyBtn />}
-                    <Card.Header>{"shrimp dumplings"}</Card.Header>
-                    <Card.Meta>Qty: {"3"}</Card.Meta>
                 </Card.Content>
             </Card>
         </div>
