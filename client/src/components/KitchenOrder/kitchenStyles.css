@@ -1,4 +1,4 @@
-.header {
+.kitOrderHeader {
   display: flex;
   justify-content: space-between;
 }
@@ -6,7 +6,7 @@
   display: block;
   margin: 0 auto;
 }
-.ui.button.doneBtn {
+.ui.button.btn {
   display: block;
   margin: 0 auto;
   width: 200px;
@@ -14,6 +14,6 @@
 .ui.fluid.card.kitOrderCard {
   margin: 1rem 0;
 }
-.content {
-  margin: 1rem;
+div.content.cardFlex {
+  display: flex;
 }

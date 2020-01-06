@@ -5,7 +5,7 @@ import "./../kitchenStyles.css";
 const KitOrderCard = () => {
     const [active, setActive] = useState(false)
 
-    handleClick = () => {
+    readyClick = () => {
         setActive(!active)
     }
 
@@ -17,7 +17,7 @@ const KitOrderCard = () => {
 
                     color='green'
                     toggle active={active}
-                    onClick={this.handleClick} >
+                    onClick={this.readyClick} >
                     Ready
                 </Button>
             </div>
@@ -33,7 +33,7 @@ const KitOrderCard = () => {
                     basic
                     color='red'
                     toggle active={active}
-                    onClick={this.handleClick} >
+                    onClick={this.readyClick} >
                     Out
                 </Button>
             </div>
@@ -44,10 +44,12 @@ const KitOrderCard = () => {
     return (
         <div>
             <Card fluid className="kitOrderCard">
-                <Card.Content>
+                <Card.Content className="cardFlex">
+                    <div>
+                        <Card.Header>{"shrimp dumplings"}</Card.Header>
+                        <Card.Meta>Qty: {"3"}</Card.Meta>
+                    </div>
                     {active ? <OutBtn /> : <ReadyBtn />}
-                    <Card.Header>{"shrimp dumplings"}</Card.Header>
-                    <Card.Meta>Qty: {"3"}</Card.Meta>
                 </Card.Content>
             </Card>
         </div>
