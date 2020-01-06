@@ -5,7 +5,7 @@ import KitOrderCard from './KitOrderCard/KitOrderCard';
 import CancelBtn from './CancelBtn';
 import "./kitchenStyles.css";
 
-const KitchenOrder = () => {
+const KitchenOrder = ( { order }) => {
     const [active, setActive] = useState(false)
 
     doneClick = () => {
@@ -50,12 +50,14 @@ const KitchenOrder = () => {
         <div>
             <div className="kitOrderHeader">
                 <h3>{"14:20"}</h3> {/* time created */}
-                <TableNumber />
+                <h2>Table#: {order.tableNumber}</h2>
             </div>
             <div className="kitCard">
-                <KitOrderCard />
-                <KitOrderCard />
-                <KitOrderCard />
+                {order.items.map((item)=>{
+                    return (
+                        <KitOrderCard item={item} key={item._id}/>
+                    )
+                })}
             </div>
             {active ? <CompleteBtn /> : <IncompleteBtn />}
             <CancelBtn />
