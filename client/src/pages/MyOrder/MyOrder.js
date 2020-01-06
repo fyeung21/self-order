@@ -1,4 +1,4 @@
-import React , {useContext, useState, useEffect} from "react";
+import React , {Fragment, useContext, useState, useEffect} from "react";
 import OrderCard from "../../components/OrderCard";
 import TableNumber from "../../components/TableNumber/TableNumber";
 import {
@@ -53,11 +53,11 @@ const MyOrder = ( {order} ) => {
         console.log(item.orderTime)
         if (item.orderTime === time){
           console.log(9)
-          sameTimedItems.unshift(item)
+          sameTimedItems.push(item)
       }
     })
     { time } //time.time = time
-    groupedItemsByDate.unshift({time, sameTimedItems})
+    groupedItemsByDate.push({time, sameTimedItems})
   })
   console.log(groupedItemsByDate)
 
@@ -79,21 +79,42 @@ const MyOrder = ( {order} ) => {
         return total
       }
     }
+    const timeFormat = (time) => {
+      console.log(time)
+      d = new Date(time)
+      return d.toLocaleTimeString()
+    }
 
   return (
     <div className="my-order">
       <TableNumber />
-      <p>
-        {/* {JSON.stringify(currectOrder.items)} */}
-        {/* {currectOrder.items} */}
-      </p>
-      <Grid doubling columns={2} padded>
-        {(items !== null) ? items.map((item, index) => (
-          <Grid.Column>
-            <OrderCard item={item} key={index} onDelete={onDelete}/>
-          </Grid.Column>
-        )) : <h2>Loading...</h2>}
-      </Grid>
+
+      <div>
+          <p>Subtotal: ${subTotal()}</p>
+        </div>
+      <div className="kitChenButton">
+      <div className="total">
+      </div>
+      <Button className="btn" onClick={onSendToKitchen}>
+          Send New Items To Kitchen
+      </Button>
+      </div>
+      {groupedItemsByDate.map((timedItems) => {
+        return (
+          <Fragment>
+            {!timedItems.time ? 
+            <h3 className="date">New Added Items:</h3> :
+            <h3 className="date">{timeFormat(timedItems.time)}</h3>
+          }
+            <Grid doubling columns={2} padded>
+              {(items !== null) ? timedItems.sameTimedItems.map((item, index) => (
+                <Grid.Column>
+                  <OrderCard item={item} key={index} onDelete={onDelete}/>
+                </Grid.Column>
+              )) : <h2>Loading...</h2>}
+            </Grid>
+          </Fragment>
+      )})}
 
       <div className="total">
         <div>

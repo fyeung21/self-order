@@ -20,3 +20,12 @@
 .my-order {
   height: 900px;
 }
+
+.kitChenButton {
+  display: block;
+  margin-left: 70%
+}
+
+.date {
+  margin-bottom: 0px
+}
