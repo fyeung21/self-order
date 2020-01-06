@@ -100,7 +100,7 @@ const MyOrder = ( {order} ) => {
 
             <Grid.Column className="dateTitle" floated='left' width={5}>
             {timedItems.time ?
-              <h3>Ordered on {timeFormat(timedItems.time)}</h3> 
+              <h3>Ordered at {timeFormat(timedItems.time)}</h3> 
               :
               <h3 className="date">New Items:</h3> 
             }
@@ -122,7 +122,7 @@ const MyOrder = ( {order} ) => {
                 </Button>
               }>
                 <br></br>
-                <Modal.Header>Recipt for Table#: {tableNumber}</Modal.Header>
+                <Modal.Header>Receipt for Table#: {tableNumber}</Modal.Header>
                 <Modal.Content>
                 {groupedItemsByDate.map((timedItems, index) => (
                   <Fragment>
@@ -148,7 +148,7 @@ const MyOrder = ( {order} ) => {
                 <Grid>
                   <Grid.Column textAlign='right' floated='right' width={10}>
                     <p>Subtotal:</p>
-                    <p>SGST(5%):</p>
+                    <p>GST(5%):</p>
                     <h3>Total:</h3>
                   </Grid.Column>
                   <Grid.Column textAlign='right' floated='right' width={6}>
