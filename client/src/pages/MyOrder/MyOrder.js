@@ -3,9 +3,9 @@ import OrderCard from "../../components/OrderCard";
 import TableNumber from "../../components/TableNumber/TableNumber";
 import {
   Button,
-  Form,
+  Item,
   Grid,
-  Header,
+  Icon,
   Image,
   Message,
   Segment
@@ -87,29 +87,52 @@ const MyOrder = ( {order} ) => {
 
   return (
     <div className="my-order">
-      <TableNumber />
-
-      <div>
+      <Grid>
+        <Grid.Column floated='left' width={5}>
+          <TableNumber />
+        </Grid.Column>
+        <Grid.Column floated='right' width={7}>
           <p>Subtotal: ${subTotal()}</p>
-        </div>
-      <div className="kitChenButton">
-      <div className="total">
-      </div>
-      <Button className="btn" onClick={onSendToKitchen}>
-          Send New Items To Kitchen
-      </Button>
-      </div>
-      {groupedItemsByDate.map((timedItems) => {
+        </Grid.Column>
+      </Grid>
+      {groupedItemsByDate.map((timedItems, index) => {
         return (
           <Fragment>
-            {!timedItems.time ? 
-            <h3 className="date">New Added Items:</h3> :
-            <h3 className="date">{timeFormat(timedItems.time)}</h3>
-          }
-            <Grid doubling columns={2} padded>
+            <Grid>
+
+            <Grid.Column className="dateTitle" floated='left' width={5}>
+            {timedItems.time ?
+              <h3>Ordered on {timeFormat(timedItems.time)}</h3> 
+              :
+              <h3 className="date">New Items:</h3> 
+            }
+            </Grid.Column>
+
+            <Grid.Column floated='right' width={7}>
+            {(!timedItems.time && index == 0)?
+                <Button icon positive onClick={onSendToKitchen}>
+                    <Icon name="utensils"/> Send To Kitchen
+                </Button> 
+                :
+                null
+            }
+            {(timedItems.time && index === 0)?
+                <Button icon color="blue">
+                  <Icon name="dollar"/>Request the Bill
+                </Button>
+                :
+                null
+            }
+            </Grid.Column>
+
+          </Grid>
+          <hr />
+            <Grid stackable doubling columns={3}>
               {(items !== null) ? timedItems.sameTimedItems.map((item, index) => (
                 <Grid.Column>
-                  <OrderCard item={item} key={index} onDelete={onDelete}/>
+                  <Item.Group divided unstackable>
+                    <OrderCard item={item} key={index} onDelete={onDelete}/>
+                  </Item.Group>
                 </Grid.Column>
               )) : <h2>Loading...</h2>}
             </Grid>

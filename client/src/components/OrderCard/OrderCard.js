@@ -1,17 +1,6 @@
 import React, { Component, Fragment, useState } from "react";
-import {
-  Button,
-  Icon,
-  Card,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-  Modal
-} from "semantic-ui-react";
-import "./styles.css";
+import { Button, Item, Card, Modal, Label, Icon }  from 'semantic-ui-react'
+// import "./styles.css";
 import ItemOrderForm from '../ItemOrderForm/';
 
 
@@ -46,57 +35,57 @@ const OrderCard = ({ item , onDelete }) => {
         // item.qty = qty
       }
     }
+   const EditButton = () => {
+     return (
+      <div>
+      <Button
+        icon="trash"
+        size="small"
+        color="red"
+        onClick={()=>{onDelete(item.item_id)}}
+        //send a callback to the parent as a props 
+        //because the delete function is located inside the parent
+      >
+      </Button>
 
-  // const OrderCard = () => {
-  return (
-    <Card fluid className="card1">
-      <Card.Content>
-        <div className="content1">
-          <Image
-            className="image-card"
-            src={item.imgurl}
-          />
-          <Card.Header className="header-my-order">
-            {item.name}
-            <Card.Header>/{item.pcs}pcs</Card.Header>
-            <Card.Meta>Qty:{item.qty}</Card.Meta>
-            <Card.Meta>Price: ${item.price * item.qty}</Card.Meta>
-            {!item.orderTime? null : 
-            <Card.Meta>Sent to Kitchen: {item.orderTime}</Card.Meta>}
-          </Card.Header>
+      <Modal dimmer='blurring' open={modalOpen} trigger={
+      <Button
+        icon="edit"
+        size="small"
+        color="blue"
+        onClick={handleOpen}
+      >
+        {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
+      </Button>
+      }>
+        <ItemOrderForm 
+          item={item} 
+          modalOpen={handleClose} 
+      />
+      </Modal>
+    </div>
+     )
+   }
 
-        {item.orderTime ? null :
-          <div>
-            <Button
-              icon="trash"
-              size="small"
-              color="red"
-              onClick={()=>{onDelete(item.item_id)}}
-              //send a callback to the parent as a props 
-              //because the delete function is located inside the parent
-            >
-            </Button>
-
-            <Modal dimmer='blurring' open={modalOpen} trigger={
-            <Button
-              icon="edit"
-              size="small"
-              color="blue"
-              onClick={handleOpen}
-            >
-              {/* <Icon name="trash alternate outline" size="large" color="red" /> */}
-            </Button>
-            }>
-              <ItemOrderForm 
-                item={item} 
-                modalOpen={handleClose} 
-            />
-            </Modal>
-          </div>
-        }
-        </div>
-      </Card.Content>
-    </Card>
+   return (
+     <Fragment>
+          <Item>
+            <Item.Image size="small" src={item.imgurl} />
+            <Item.Content>
+              <Item.Header>{item.name}</Item.Header>
+              <Item.Meta>
+                <span className='cinema'>${item.price} / {item.pcs}pcs</span>
+              </Item.Meta>
+              <Item.Description>qty: {item.qty}</Item.Description>
+                {item.orderTime?
+                  <Item.Description>status: {item.status}</Item.Description> :
+                    <Item.Extra>
+                      <EditButton />
+                    </Item.Extra>
+                }
+            </Item.Content>
+          </Item>
+        </Fragment>
   );
 };
 

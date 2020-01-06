@@ -1,31 +1,12 @@
-.total {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 40px;
-}
-
-.btns {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  padding-top: 30px;
-  max-width: 150px;
-  margin: 0 auto;
-}
-.ui.button.btn {
-  margin-bottom: 10px;
-}
-
-.my-order {
-  height: 900px;
-}
-
 .kitChenButton {
   display: block;
   margin-left: 70%
 }
 
-.date {
-  margin-bottom: 0px
+.h3.date {
+  margin-top: 100%;   
+}
+
+.dateTitle {
+  vertical-align: bottom
 }
