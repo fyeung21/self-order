@@ -20,17 +20,17 @@ const Kitchen = ({orders}) => {
 
     function time() {
         var d = new Date();
-        var m = d.getMinutes();
-        var h = d.getHours();
+        var m = String(d.getMinutes()).padStart(2, "0");
+        var h = String(d.getHours()).padStart(2, "0");
 
         currentTime.textContent = h + ":" + m;
     }
 
-    setInterval(time, 1000);
+    setInterval(time, 100);
 
     const history = useHistory()
-    const clickHandler4 = () => {
-        history.push('/menucontrol')
+    const goToMenu = () => {
+        history.push('/menu-control')
     }
 
 
@@ -39,7 +39,7 @@ const Kitchen = ({orders}) => {
             <div className="kitHeader">
                 <h1>{today}</h1>
                 <h1 id="currentTime" className="timeNow"></h1>
-                <Button onClick={clickHandler4}><h1>Menu Control</h1></Button>
+                <Button onClick={goToMenu}><h3>Menu Control</h3></Button>
             </div>
             <div className="kitchenFlex">
                 {orders.map((order) => {

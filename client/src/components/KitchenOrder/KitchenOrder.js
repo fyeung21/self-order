@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
+import CancelBtn from './CancelBtn';
 import "./kitchenStyles.css";
 
 const KitchenOrder = ( { order }) => {
     const [active, setActive] = useState(false)
 
-    handleClick2 = () => {
+    doneClick = () => {
         setActive(!active)
     }
 
@@ -19,26 +20,26 @@ const KitchenOrder = ( { order }) => {
             <div>
                 <h3>{time}</h3>
                 <Button
-                    className="doneBtn"
+                    className="btn"
                     basic
                     size="large"
                     color='grey'
                     toggle active={active}
-                    onClick={this.handleClick2} >
+                    onClick={this.doneClick} >
                     Complete
                 </Button>
             </div>
         )
     }
-    const NotDoneBtn = () => {
+    const IncompleteBtn = () => {
         return (
             <div>
                 <Button
-                    className="doneBtn"
+                    className="btn"
                     size="large"
                     color='yellow'
                     toggle active={active}
-                    onClick={this.handleClick2} >
+                    onClick={this.doneClick} >
                     Done
                 </Button>
             </div>
@@ -47,7 +48,7 @@ const KitchenOrder = ( { order }) => {
 
     return (
         <div>
-            <div className="header">
+            <div className="kitOrderHeader">
                 <h3>{"14:20"}</h3> {/* time created */}
                 <h2>Table#: {order.tableNumber}</h2>
             </div>
@@ -58,7 +59,8 @@ const KitchenOrder = ( { order }) => {
                     )
                 })}
             </div>
-            {active ? <CompleteBtn /> : <NotDoneBtn />}
+            {active ? <CompleteBtn /> : <IncompleteBtn />}
+            <CancelBtn />
         </div>
     )
 }
