@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import CancelBtn from './CancelBtn';
+import { Meteor } from 'meteor/meteor';
 import "./kitchenStyles.css";
 
 const KitchenOrder = ( { order }) => {
@@ -10,6 +11,7 @@ const KitchenOrder = ( { order }) => {
 
     doneClick = () => {
         setActive(!active)
+        Meteor.call('activeTables.inActiveTable', order.tableNumber)
     }
 
     var today = new Date();
@@ -49,13 +51,18 @@ const KitchenOrder = ( { order }) => {
     return (
         <div>
             <div className="kitOrderHeader">
-                <h3>{"14:20"}</h3> {/* time created */}
-                <h2>Table#: {order.tableNumber}</h2>
+                {order.requestBill? 
+                <h2>BILL REQUESTED</h2> : 
+                <h3>{"14:20"}</h3> 
+
+                }
+                <h2>Table#: {order.tableNumber} </h2>
+                
             </div>
             <div className="kitCard">
                 {order.items.map((item)=>{
                     return (
-                        <KitOrderCard item={item} key={item._id}/>
+                        <KitOrderCard order={order} item={item} key={item.item_id}/>
                     )
                 })}
             </div>

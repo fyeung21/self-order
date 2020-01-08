@@ -45,4 +45,9 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  'activeTables.inActiveTable' : function(tableNumber){
+    ActiveTables.remove({'tableNumber': tableNumber})
+  }
+})
 export const ActiveTables =  new Mongo.Collection('activeTables')

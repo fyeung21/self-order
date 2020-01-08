@@ -23,7 +23,7 @@ const Kitchen = ({orders}) => {
         var m = String(d.getMinutes()).padStart(2, "0");
         var h = String(d.getHours()).padStart(2, "0");
 
-        currentTime.textContent = h + ":" + m;
+        // currentTime.textContent = h + ":" + m;
     }
 
     setInterval(time, 100);
@@ -64,15 +64,12 @@ export default withTracker(() => {
     for (let i in activeOrders) {
         activeIds.push(parseInt(activeOrders[i].orderId))
     }
-    console.log(JSON.stringify(activeIds))
     const orders = GlobalOrders.find({
         "orderId" : {
             "$in" : 
             activeIds
            }
     }).fetch()
-
-    console.log(JSON.stringify(orders))
 
     // console.log(JSON.stringify(currectOrder))
     return { //return an object
