@@ -1,5 +1,7 @@
 .kitOrderHeader {
   display: flex;
+  background-color: #ac131c;
+  color: white
   /* justify-content: space-between; */
 }
 .ui.card.kitCard {
@@ -16,4 +18,11 @@
 }
 div.content.cardFlex {
   display: flex;
+  width: 215px;
+}
+
+.ui.grid.tableNumber {
+  margin-bottom: 30px;
+  box-shadow: 3px 3px 5px #888888;
+
 }

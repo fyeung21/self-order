@@ -116,5 +116,35 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  'globalOrders.ready':function(orderId, item_id){
+    GlobalOrders.update(
+      {"orderId" : orderId, "items.item_id" : item_id}, 
+      { $set: {"items.$.status" : "Served","items.$.ready" : true} }, {multi: true }
+    )
+  }
+})
+
+Meteor.methods({
+  'globalOrders.out':function(orderId, item_id){
+    GlobalOrders.update(
+      {"orderId" : orderId, "items.item_id" : item_id}, 
+      { $set: {"items.$.status" : "processing","items.$.ready" : false} }, {multi: true }
+    )
+  }
+})
+
+Meteor.methods({
+  'globalOrders.requestBill':function(orderId){
+    orderId = parseInt(orderId)
+
+    GlobalOrders.update(
+      {"orderId" : orderId}, 
+      { $set: {"requestBill" : true} }
+    )
+  }
+})
+
+
 export const GlobalOrders =  new Mongo.Collection('globalOrders');
 

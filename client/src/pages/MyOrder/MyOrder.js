@@ -66,7 +66,11 @@ const MyOrder = ( {order} ) => {
   const onDelete = ( item_id ) => {
     Meteor.call('globalOrders.deleteItems', item_id, orderId)
   }
-  
+
+  const requestBill = () => {
+    Meteor.call('globalOrders.requestBill', orderId)
+  }
+
   const subTotal = () => {
     // console.log("@@" + JSON.stringify(currentOrder))
     if (items != null){
@@ -117,7 +121,7 @@ const MyOrder = ( {order} ) => {
             {(timedItems.time && index === 0)?
 
               <Modal size="tiny" closeIcon trigger={
-                <Button icon color="blue">
+                <Button icon color="blue" onClick={requestBill}>
                   <Icon name="dollar"/>Request the Bill
                 </Button>
               }>
@@ -184,22 +188,6 @@ const MyOrder = ( {order} ) => {
             </Grid>
           </Fragment>
       )})}
-
-      <div className="total">
-        <div>
-          <p>Subtotal: ${subTotal()}</p>
-          <p>GST(5%): ${subTotal()*100*0.05/100}</p>
-          <p>Total: ${subTotal()*100*1.05/100}</p>
-        </div>
-      </div>
-      <div className="btns">
-        <Button className="btn" onClick={onSendToKitchen}>
-          Send To Kitchen
-        </Button>
-        <Button className="btn">
-          Get My Bill
-        </Button>
-      </div>
       <NavBar />
     </div>
   );
