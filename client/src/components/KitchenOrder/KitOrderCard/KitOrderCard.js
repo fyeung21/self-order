@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Icon, Grid } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import "./../kitchenStyles.css";
 
@@ -53,7 +53,7 @@ const KitOrderCard = ({order, item}) => {
             <Card fluid className="kitOrderCard">
                 <Card.Content className="cardFlex">
                     <div>
-                        <Card.Header>{item.name}</Card.Header>
+                        <Card.Header><h3>{item.name}</h3></Card.Header>
                         <Card.Meta>Qty: {item.qty}</Card.Meta>
                         {item.orderTime ? 
                         <Card.Meta>Added: {timeFormat(item.orderTime)}</Card.Meta> 
@@ -61,13 +61,22 @@ const KitOrderCard = ({order, item}) => {
                         <Card.Meta>Added: Not yet.</Card.Meta>
                         } 
                     </div>
-                    {(item.orderTime && !item.ready) ? 
-                        <ReadyBtn order={order} item={item}/>
-                    : null }
-                    {(item.orderTime && item.ready) ? 
-                        <OutBtn order={order} item={item}/> 
-                    : null }
                 </Card.Content>
+                <Card.Content extra small>
+                    <Grid verticalAlign='middle'>
+                        <Grid.Column floated="left" width={4}>
+                             <Button circular icon="delete" />
+                        </Grid.Column>
+                        <Grid.Column floated="right" width={12}>
+                            {(item.orderTime && !item.ready) ? 
+                                <ReadyBtn order={order} item={item}/>
+                            : null }
+                            {(item.orderTime && item.ready) ? 
+                                <OutBtn order={order} item={item}/> 
+                            : null }
+                            </Grid.Column>
+                         </Grid>
+                    </Card.Content>
             </Card>
         </div>
     )

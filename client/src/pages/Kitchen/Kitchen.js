@@ -3,7 +3,7 @@ import KitchenOrder from '../../components/KitchenOrder';
 import { GlobalOrders } from '/imports/api/collections/globalOrders';
 import { ActiveTables } from '/imports/api/collections/activeTables';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button, Modal } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 import "./styles";
 
@@ -33,11 +33,11 @@ const Kitchen = ({orders}) => {
         history.push('/menu-control')
     }
 
-
     return (
         <div className="kitchenBackground">
+            <Modal className="fullscreen" size="fullscreen" open={true}>
             <div className="kitHeader">
-                <h1>{today}</h1>
+                <h1>Staff Interface -- {today}</h1>
                 <h1 id="currentTime" className="timeNow"></h1>
                 <Button onClick={goToMenu}><h3>Menu Control</h3></Button>
             </div>
@@ -50,6 +50,7 @@ const Kitchen = ({orders}) => {
                     )
                 })}
             </div>
+            </Modal>
         </div >
     );
 };
@@ -64,13 +65,14 @@ export default withTracker(() => {
     for (let i in activeOrders) {
         activeIds.push(parseInt(activeOrders[i].orderId))
     }
-    const orders = GlobalOrders.find({
+    const orders = GlobalOrders.find(
+        {
         "orderId" : {
             "$in" : 
             activeIds
            }
-    }).fetch()
-
+    }, { sort : { "orderId" : -1 } } ).fetch()
+    // console.log(order)
     // console.log(JSON.stringify(currectOrder))
     return { //return an object
        orders

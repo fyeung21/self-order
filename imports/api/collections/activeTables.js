@@ -17,15 +17,15 @@ Meteor.methods({
       const query = {} //get everything
       const options = {sort: {"orderId" : -1}, limit: 1} //sort _id descendingly. only get 1 item from the top
       const latestOrder = GlobalOrders.find(query, options).fetch() //this is the query
-
+      console.log("lasterst" + JSON.stringify( latestOrder))
       //if there is nothing in GlobalOrders
       if (latestOrder.length == 0){
         newOrderId = 1
       }
       //fetch return an array. new order Id = lastest order id  + 1 
       if (latestOrder.length > 0){
-        newOrderId = latestOrder[0].orderId
-        newOrderId = newOrderId + 1
+        newOrderId = latestOrder[0].orderId + 1
+        // newOrderId = newOrderId + 1
         console.log('!newOrderId' + newOrderId)
       }
       GlobalOrders.insert({"orderId" : newOrderId, tableNumber, "items":[]},

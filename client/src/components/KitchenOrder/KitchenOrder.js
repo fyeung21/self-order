@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import CancelBtn from './CancelBtn';
@@ -8,6 +8,21 @@ import "./kitchenStyles.css";
 
 const KitchenOrder = ( { order }) => {
     const [active, setActive] = useState(false)
+
+    // const sortedItems = () => {
+    const sortedItems = order.items.sort((a, b)=>{
+            let comparison = 0;
+            if (a.orderTime > b.orderTime) {
+              comparison = -1;
+            } else if (a.orderTime < b.orderTime) {
+              comparison = 1;
+            }
+            console.log(comparison)
+            return comparison;
+          }
+        )
+    // }
+    
 
     doneClick = () => {
         setActive(!active)
@@ -20,15 +35,14 @@ const KitchenOrder = ( { order }) => {
     const CompleteBtn = () => {
         return (
             <div>
-                <h3>{time}</h3>
+                {/* <h3>{time}</h3> */}
                 <Button
                     className="btn"
                     basic
-                    size="large"
-                    color='grey'
+                    color='red'
                     toggle active={active}
                     onClick={this.doneClick} >
-                    Complete
+                    Completed
                 </Button>
             </div>
         )
@@ -50,24 +64,28 @@ const KitchenOrder = ( { order }) => {
 
     return (
         <div>
-            <div className="kitOrderHeader">
-                {order.requestBill? 
-                <h2>BILL REQUESTED</h2> : 
+            <Grid className="tableNumber">
+                <Grid.Row color="red">
+                    <Grid.Column floated='left' width={6}><h3>#: {order.tableNumber} </h3></Grid.Column>
+                    <Grid.Column floated='right' width={10}><h3>{"Timer: 12:09"}</h3></Grid.Column>
+                </Grid.Row>
+            </Grid>
+                {/* <h2>BILL REQUESTED</h2> : 
                 <h3>{"14:20"}</h3> 
-
                 }
-                <h2>Table#: {order.tableNumber} </h2>
-                
-            </div>
+            </div> */}
             <div className="kitCard">
-                {order.items.map((item)=>{
+                {sortedItems.map((item)=>{
+                    //sort the array by date
                     return (
                         <KitOrderCard order={order} item={item} key={item.item_id}/>
                     )
                 })}
             </div>
-            {active ? <CompleteBtn /> : <IncompleteBtn />}
-            <CancelBtn />
+
+            <CompleteBtn />
+            {/* {active ?  : <IncompleteBtn />}
+            <CancelBtn /> */}
         </div>
     )
 }
