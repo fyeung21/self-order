@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Icon, Modal } from "semantic-ui-react";
+import { Menu, Icon, Modal, Button, Header } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import "./NavStyle";
 
@@ -9,14 +9,7 @@ const NavBar = () => {
     history.push("/Menu");
   };
   const clickHandler2 = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-    const handleClose = () => {
-      setModalOpen(false);
-    };
-    const handleOpen = () => {
-      setModalOpen(true);
-    };
-    alert("A server will be here shortly.");
+    // alert("A server will be here shortly.");
   };
   const clickHandler3 = () => {
     history.push("/my-order");
@@ -40,16 +33,30 @@ const NavBar = () => {
       </Menu.Item>
 
       {/* Service */}
-      <Menu.Item
-        name="Service"
-        active={activeItem === "service"}
-        onClick={clickHandler2}
+
+      <Modal
+        trigger={
+          <Menu.Item
+            name="Service"
+            active={activeItem === "service"}
+            onClick={clickHandler2}
+          >
+            <div className="navContainer">
+              <Icon name="bell outline" size="big" />
+              <span>Service</span>
+            </div>
+          </Menu.Item>
+        }
       >
-        <div className="navContainer">
-          <Icon name="bell outline" size="big" />
-          <span>Service</span>
-        </div>
-      </Menu.Item>
+        <Modal.Header>Select an option</Modal.Header>
+        <Modal.Content>
+          <Modal.Description>
+            <Button>Call the server</Button>
+            <Button>Second Option</Button>
+            <Button>Third Option</Button>
+          </Modal.Description>
+        </Modal.Content>
+      </Modal>
 
       {/* My Order */}
       <Menu.Item
