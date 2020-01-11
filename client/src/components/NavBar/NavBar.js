@@ -85,10 +85,7 @@ const NavBar = ( {order} ) => {
           </div>
         </Modal.Content>
       </Modal>
-        {/* </Menu > */}
-    )
-}
-      {/* My Order */}
+      
       <Menu.Item
         name="My Order"
         active={activeItem === "my-order"}
