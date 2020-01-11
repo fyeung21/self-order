@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Router, Route, Switch, Redirect } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { TableContext } from "../contexts/TableContextProvider"
@@ -17,6 +18,7 @@ const browserHistory = createBrowserHistory();
 export const renderRoutes = () => (
     <TableContext.Consumer>
         {({ getTableNumber }) => {
+            console.log('table' + getTableNumber)
             return (
                 <Router history={browserHistory}>
                     {/* if no table number cookie, go to welcome page */}
@@ -45,5 +47,4 @@ export const renderRoutes = () => (
             )
         }}
     </TableContext.Consumer>
-
 );

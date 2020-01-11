@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useState, Fragment} from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
+import { Modal, Header } from 'semantic-ui-react';
+
 import "./NavStyle";
 
 
-const NavBar = () => {
+const NavBar = ( {order} ) => {
+    const [openModal, setOpenModal] = useState(false)
     const history = useHistory()
-    const clickHandler = () => {
-        history.push('/Menu')
+    const clickHandler = (order) => {
+
+        console.log(JSON.stringify(order))
+        if (order[0].requestBill === 'Paid'){
+            alert("Order has been paid. Session expired")
+
+            // console.log("error")
+            // setOpenModal(true)
+        }
+        else {
+            history.push('/Menu')
+        }
     }
     const clickHandler2 = () => {
         alert("A server will be here shortly.")
@@ -20,14 +33,19 @@ const NavBar = () => {
     const { activeItem } = this.state
 
     return (
+        <Fragment>
+        <Modal open={openModal}>
+            <Modal.Header>
+                Error
+            </Modal.Header>
+        </Modal>
         <Menu fluid fixed="bottom" widths={3}>
-
 
             {/* Menu */}
             <Menu.Item
                 name='Menu'
                 active={activeItem === 'menu'}
-                onClick={clickHandler}
+                onClick={()=>{clickHandler(order)}}
             >
                 <div className="navContainer">
                     <Icon name='food' size='big' />
@@ -60,6 +78,7 @@ const NavBar = () => {
             </Menu.Item>
 
         </Menu >
+        </Fragment>
     )
 }
 export default NavBar;

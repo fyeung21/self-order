@@ -135,12 +135,12 @@ Meteor.methods({
 })
 
 Meteor.methods({
-  'globalOrders.requestBill':function(orderId){
+  'globalOrders.requestBill':function(orderId, msg){
     orderId = parseInt(orderId)
 
     GlobalOrders.update(
       {"orderId" : orderId}, 
-      { $set: {"requestBill" : true} }
+      { $set: {"requestBill" : msg} }
     )
   }
 })
