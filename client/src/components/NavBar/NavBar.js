@@ -50,11 +50,19 @@ const NavBar = () => {
       >
         <Modal.Header>Select an option</Modal.Header>
         <Modal.Content>
-          <Modal.Description>
-            <Button>Call the server</Button>
-            <Button>Second Option</Button>
-            <Button>Third Option</Button>
-          </Modal.Description>
+          <div className="ui.description">
+            <Modal.Description>
+              <Button>
+                Call the server <Icon name="bell" size="small" color="white" />
+              </Button>
+              <Button>
+                Birthday <Icon name="birthday" size="small" />
+              </Button>
+              <Button>
+                Refill tea <Icon name="coffee" size="small" />
+              </Button>
+            </Modal.Description>
+          </div>
         </Modal.Content>
       </Modal>
 
