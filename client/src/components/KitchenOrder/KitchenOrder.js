@@ -4,6 +4,8 @@ import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
 import CancelBtn from './CancelBtn';
 import { Meteor } from 'meteor/meteor';
+import Timer from './Timer'
+
 import "./kitchenStyles.css";
 
 const KitchenOrder = ( { order }) => {
@@ -101,7 +103,7 @@ const KitchenOrder = ( { order }) => {
                 }
                 <Grid.Row color="red">
                     <Grid.Column floated='left' width={6}><h3>#: {order.tableNumber} </h3></Grid.Column>
-                    <Grid.Column floated='right' width={10}><h3>{"Timer: 12:09"}</h3></Grid.Column>
+                    <Grid.Column floated='right' width={10}><h3><Timer time={order.createdTime} /></h3></Grid.Column>
                 </Grid.Row>
             </Grid>
             <div className="kitCard">

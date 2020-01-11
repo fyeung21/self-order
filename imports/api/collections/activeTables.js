@@ -8,6 +8,7 @@ Meteor.methods({
 
 //find if the tableNumber is inside the activeTables
   const tables = ActiveTables.find({"tableNumber" : tableNumber}).fetch()
+    const time = new Date()
     if (tables === undefined || tables.length == 0){
       console.log("table#: " + tableNumber + ' NOT found!')
       //if table number is not found, insert a new order number.
@@ -28,11 +29,11 @@ Meteor.methods({
         // newOrderId = newOrderId + 1
         console.log('!newOrderId' + newOrderId)
       }
-      GlobalOrders.insert({"orderId" : newOrderId, tableNumber, "items":[]},
+      GlobalOrders.insert({"orderId" : newOrderId, tableNumber, "items":[], "createdTime" : time},
        function(err, objectId){
         console.log(objectId)
        })
-      ActiveTables.insert({"orderId" : newOrderId, tableNumber})  
+      ActiveTables.insert({"orderId" : newOrderId, tableNumber, "createdTime" : time})  
       console.log("New orderId: " + newOrderId)
       return newOrderId
     }
