@@ -1,36 +1,56 @@
-import React from "react";
-import { Menu, Icon, Modal, Button, Header } from "semantic-ui-react";
+import React, {useState, Fragment} from 'react';
+import { Menu, Icon } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
+import { Modal, Header } from 'semantic-ui-react';
+
 import "./NavStyle";
 
-const NavBar = () => {
-  const history = useHistory();
-  const clickHandler = () => {
-    history.push("/Menu");
-  };
-  const clickHandler2 = () => {
-    // alert("A server will be here shortly.");
-  };
-  const clickHandler3 = () => {
-    history.push("/my-order");
-  };
-  state = {};
+const NavBar = ( {order} ) => {
+    const [openModal, setOpenModal] = useState(false)
+    const history = useHistory()
+    const clickHandler = (order) => {
 
-  const { activeItem } = this.state;
+        console.log(JSON.stringify(order))
+        if (order[0].requestBill === 'Paid'){
+            alert("Order has been paid. Session expired")
 
-  return (
-    <Menu fluid fixed="bottom" widths={3}>
-      {/* Menu */}
-      <Menu.Item
-        name="Menu"
-        active={activeItem === "menu"}
-        onClick={clickHandler}
-      >
-        <div className="navContainer">
-          <Icon name="food" size="big" />
-          <span>Menu</span>
-        </div>
-      </Menu.Item>
+            // console.log("error")
+            // setOpenModal(true)
+        }
+        else {
+            history.push('/Menu')
+        }
+    }
+    const clickHandler2 = () => {
+        alert("A server will be here shortly.")
+    }
+    const clickHandler3 = () => {
+        history.push('/my-order')
+    }
+    state = {}
+
+    const { activeItem } = this.state
+
+    return (
+        <Fragment>
+        <Modal open={openModal}>
+            <Modal.Header>
+                Error
+            </Modal.Header>
+        </Modal>
+        <Menu fluid fixed="bottom" widths={3}>
+
+            {/* Menu */}
+            <Menu.Item
+                name='Menu'
+                active={activeItem === 'menu'}
+                onClick={()=>{clickHandler(order)}}
+            >
+                <div className="navContainer">
+                    <Icon name='food' size='big' />
+                    <span>Menu</span>
+                </div>
+            </Menu.Item>
 
       {/* Service */}
 
@@ -65,7 +85,10 @@ const NavBar = () => {
           </div>
         </Modal.Content>
       </Modal>
-
+        </Menu >
+        </Fragment>
+    )
+}
       {/* My Order */}
       <Menu.Item
         name="My Order"

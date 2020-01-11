@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Grid } from 'semantic-ui-react';
 import TableNumber from '../TableNumber/TableNumber';
 import KitOrderCard from './KitOrderCard/KitOrderCard';
@@ -8,6 +8,7 @@ import "./kitchenStyles.css";
 
 const KitchenOrder = ( { order }) => {
     const [active, setActive] = useState(false)
+    const [billColor, setBillColor] = useState("blue")
 
     // const sortedItems = () => {
     const sortedItems = order.items.sort((a, b)=>{
@@ -61,19 +62,33 @@ const KitchenOrder = ( { order }) => {
             </div>
         )
     }
+    // useEffect(()=>{
+    //     if (order.requestBill === 'Paid'){
+    //         setBillColor('orange')
+    //     }
+    //     if (order.requestBill === 'Bill Requested'){
+    //         setBillColor('orange')
+    //     }
+    // },[order.requestBill])
 
     return (
         <div>
             <Grid className="tableNumber">
+                {order.requestBill == "Bill requested" ? 
+                <Grid.Row color='blue' textAlign="center">
+                    <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
+                </Grid.Row> : null 
+                }
+                {order.requestBill == "Paid" ? 
+                <Grid.Row color='green' textAlign="center">
+                    <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
+                </Grid.Row> : null 
+                }
                 <Grid.Row color="red">
                     <Grid.Column floated='left' width={6}><h3>#: {order.tableNumber} </h3></Grid.Column>
                     <Grid.Column floated='right' width={10}><h3>{"Timer: 12:09"}</h3></Grid.Column>
                 </Grid.Row>
             </Grid>
-                {/* <h2>BILL REQUESTED</h2> : 
-                <h3>{"14:20"}</h3> 
-                }
-            </div> */}
             <div className="kitCard">
                 {sortedItems.map((item)=>{
                     //sort the array by date

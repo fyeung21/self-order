@@ -31,7 +31,7 @@ const MyOrder = ( {order} ) => {
   orderId = useContext(OrderIdContext).getOrderId
   const tableNumber = useContext(TableContext).getTableNumber
   Session.set('orderId', orderId) //session is for passing value to withTracker
-
+  const [payModal, setPayModal] = useState(false)
   // *** Rearrange and group all the items by order time ***
   // 1 .create an array with all the orderTimes, then remove diplicate ones.
   let timesArr = []
@@ -67,8 +67,8 @@ const MyOrder = ( {order} ) => {
     Meteor.call('globalOrders.deleteItems', item_id, orderId)
   }
 
-  const requestBill = () => {
-    Meteor.call('globalOrders.requestBill', orderId)
+  const requestBill = ( msg ) => {
+    Meteor.call('globalOrders.requestBill', orderId, msg)
   }
 
   const subTotal = () => {
@@ -87,6 +87,16 @@ const MyOrder = ( {order} ) => {
       return d.toLocaleTimeString()
     }
 
+    const onPay = () => {
+      console.log('del cookie')
+      document.cookie = "orderId=null; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+      document.cookie = "tableNumber=null; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+      setPayModal(true)
+    }
+
+    const closePayModal = () =>{
+      setPayModal(false)
+    }
   return (
     <div className="my-order">
       <Grid>
@@ -118,10 +128,12 @@ const MyOrder = ( {order} ) => {
                 :
                 null
             }
-            {(timedItems.time && index === 0)?
+            {order[0].requestBill === 'Paid' ? 
+               <h3 style={{color: "green"}}>Paid, Thank you :)</h3> :
+            (timedItems.time && index === 0)?
 
               <Modal size="tiny" closeIcon trigger={
-                <Button icon color="blue" onClick={requestBill}>
+                <Button icon color="blue" onClick={()=>{requestBill('Bill requested')}}>
                   <Icon name="dollar"/>Request the Bill
                 </Button>
               }>
@@ -162,6 +174,30 @@ const MyOrder = ( {order} ) => {
                   </Grid.Column>
                 </Grid>
                 <br></br>
+
+                <Grid textAlign='center' >
+                    <Grid.Column>
+                      {order[0].requestBill === "Paid" ? 
+                      <h3 style={{color: "green"}}>Paid, Thank you :)</h3> :
+                        <Button positive onClick={()=>{
+                          requestBill('Paid')
+                          onPay()}}>
+                          Make your payment
+                        </Button>
+                      }
+                      <Modal open={payModal} size="mini">
+                          <Modal.Header>
+                            Thank you
+                          </Modal.Header>
+                          <Modal.Content>
+                          Your payment has been made. Please come again!
+                          </Modal.Content>
+                          <Modal.Actions>
+                          <Button onClick={closePayModal}>OK</Button>
+                          </Modal.Actions>
+                        </Modal>
+                    </Grid.Column>
+                  </Grid>
                 <Grid>
                   <Grid.Column textAlign='center'>
                     Thank you for visiting. Please come again!
@@ -173,6 +209,7 @@ const MyOrder = ( {order} ) => {
                 :
                 null
             }
+            
             </Grid.Column>
 
           </Grid>
@@ -188,7 +225,7 @@ const MyOrder = ( {order} ) => {
             </Grid>
           </Fragment>
       )})}
-      <NavBar />
+      <NavBar order={order}/>
     </div>
   );
 };
