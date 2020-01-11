@@ -1,11 +1,16 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, useContext} from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
-import { Modal, Header, Button } from 'semantic-ui-react';
+import { Modal, Grid, Button } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { OrderIdContext } from "../../contexts/OrderIdContextProvider"
 
 import "./NavStyle";
 
+
 const NavBar = ( {order} ) => {
+    const orderId = useContext(OrderIdContext).getOrderId
+
     const [openModal, setOpenModal] = useState(false)
     const history = useHistory()
     const clickHandler = (order) => {
@@ -31,6 +36,16 @@ const NavBar = ( {order} ) => {
 
     const { activeItem } = this.state
 
+    const services = [
+        {name: "Refill tea", icon: "coffee", color:"red"},
+        {name: "Call the server", icon: "bell", color:"red"},
+        {name: "Birthday", icon: "birthday", color:"red"}
+    ]
+
+    const onService = (service) => {
+        Meteor.call('globalOrders.requestBill', orderId, service.name)
+    }
+    
     return (
     <Fragment>
         <Modal open={openModal}>
@@ -54,7 +69,7 @@ const NavBar = ( {order} ) => {
 
       {/* Service */}
 
-      <Modal
+      <Modal size="mini" closeIcon
         trigger={
           <Menu.Item
             name="Service"
@@ -69,23 +84,28 @@ const NavBar = ( {order} ) => {
         }
       >
         <Modal.Header>Select an option</Modal.Header>
-        <Modal.Content>
           <div className="ui.description">
-            <Modal.Description>
-            <Button>
-                Refill tea <Icon name="coffee" size="small" />
-              </Button>
-              <Button>
-                Call the server <Icon name="bell" size="small" color="white" />
-              </Button>
-              <Button>
-                Birthday <Icon name="birthday" size="small" />
-              </Button>
-            </Modal.Description>
+          <Modal.Content  className="service">
+          <Grid centered columns={1}>
+              {services.map(service => {
+                  return(
+                <Grid.Column textAlign='center'>
+                    <Modal trigger={
+                        <Button color={service.color} fluid size="huge"
+                        onClick={()=>onService(service)}>
+                        <Icon name={service.icon} size="small" />
+                        {" " + service.name} 
+                        </Button>  
+                        }
+                        header='Your server will be here shorty!'
+                        actions={[{ key: 'done', content: 'OK', positive: true }]}/>
+              </Grid.Column>
+              )})}
+              </Grid>
+              </Modal.Content>
           </div>
-        </Modal.Content>
       </Modal>
-      
+
       <Menu.Item
         name="My Order"
         active={activeItem === "my-order"}
