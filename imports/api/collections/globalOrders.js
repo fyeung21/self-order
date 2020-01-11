@@ -145,6 +145,16 @@ Meteor.methods({
   }
 })
 
+Meteor.methods({
+  'globalOrders.requestService':function(orderId, service){
+    orderId = parseInt(orderId)
+
+    GlobalOrders.update(
+      {"orderId" : orderId}, 
+      { $set: {"requestService" : service} }
+    )
+  }
+})
 
 export const GlobalOrders =  new Mongo.Collection('globalOrders');
 

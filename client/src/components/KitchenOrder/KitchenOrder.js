@@ -74,6 +74,21 @@ const KitchenOrder = ( { order }) => {
     return (
         <div>
             <Grid className="tableNumber">
+            {order.requestBill == "Refill tea" ? 
+                <Grid.Row color='orange' textAlign="center">
+                    <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
+                </Grid.Row> : null 
+                }
+                {order.requestBill == "Call the server" ? 
+                <Grid.Row color='orange' textAlign="center">
+                    <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
+                </Grid.Row> : null 
+                }
+                {order.requestBill == "Birthday" ? 
+                <Grid.Row color='orange' textAlign="center">
+                    <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
+                </Grid.Row> : null 
+                }
                 {order.requestBill == "Bill requested" ? 
                 <Grid.Row color='blue' textAlign="center">
                     <Grid.Column><h3>{order.requestBill}</h3></Grid.Column>
