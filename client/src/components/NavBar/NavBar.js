@@ -1,7 +1,7 @@
 import React, {useState, Fragment} from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
-import { Modal, Header } from 'semantic-ui-react';
+import { Modal, Header, Button } from 'semantic-ui-react';
 
 import "./NavStyle";
 
@@ -22,7 +22,7 @@ const NavBar = ( {order} ) => {
         }
     }
     const clickHandler2 = () => {
-        alert("A server will be here shortly.")
+        // alert("A server will be here shortly.")
     }
     const clickHandler3 = () => {
         history.push('/my-order')
@@ -32,7 +32,7 @@ const NavBar = ( {order} ) => {
     const { activeItem } = this.state
 
     return (
-        <Fragment>
+    <Fragment>
         <Modal open={openModal}>
             <Modal.Header>
                 Error
@@ -72,21 +72,20 @@ const NavBar = ( {order} ) => {
         <Modal.Content>
           <div className="ui.description">
             <Modal.Description>
+            <Button>
+                Refill tea <Icon name="coffee" size="small" />
+              </Button>
               <Button>
                 Call the server <Icon name="bell" size="small" color="white" />
               </Button>
               <Button>
                 Birthday <Icon name="birthday" size="small" />
               </Button>
-              <Button>
-                Refill tea <Icon name="coffee" size="small" />
-              </Button>
             </Modal.Description>
           </div>
         </Modal.Content>
       </Modal>
-        </Menu >
-        </Fragment>
+        {/* </Menu > */}
     )
 }
       {/* My Order */}
@@ -101,6 +100,8 @@ const NavBar = ( {order} ) => {
         </div>
       </Menu.Item>
     </Menu>
+    </Fragment>
+
   );
 };
 export default NavBar;
