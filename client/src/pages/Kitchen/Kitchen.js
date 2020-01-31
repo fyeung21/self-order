@@ -3,7 +3,7 @@ import KitchenOrder from '../../components/KitchenOrder';
 import { GlobalOrders } from '/imports/api/collections/globalOrders';
 import { ActiveTables } from '/imports/api/collections/activeTables';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Grid, Button, Modal } from 'semantic-ui-react';
+import { Button, Modal } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 import "./styles";
 
