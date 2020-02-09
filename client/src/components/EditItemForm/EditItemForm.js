@@ -9,21 +9,20 @@ import NavBar from '../NavBar/NavBar';
 import { Menu } from '/imports/api/collections/menu';
 import OrderId from '../OrderId';
 import "./styles.css";
-// import AddItemFrom from '.';
 
-// const menuItems = require('./menu.json');
 const AddItemForm = ( {item, closeModal} ) => {
   const [state, setState] = useState(
     { 
     _id: item._id,
-    name: item.name, 
+    nameEng: item.nameEng,
+    nameChi: item.nameChi,
     price: item.price, 
     pcs: item.pcs, 
     description: item.description, 
     imgurl: item.imgurl
     }
   )
-  let { _id, name, price, pcs, description, imgurl} = state
+  let { nameEng, nameChi, price, pcs, description, imgurl} = state
 
     handleSubmit = () => {
       Meteor.call('menu.updateItem', state )
@@ -59,10 +58,18 @@ const AddItemForm = ( {item, closeModal} ) => {
       <Form onSubmit={this.handleSubmit}>
         <Form.Input 
           required
-          label='Item name' 
-          placeholder='Name' 
-          name='name'
-          value={name}
+          label='Chinese name' 
+          placeholder='Chinese Name' 
+          name='nameChi'
+          value={nameChi}
+          onChange={this.handleChange}
+          />
+          <Form.Input 
+          required
+          label='English name' 
+          placeholder='English Name' 
+          name='nameEng'
+          value={nameEng}
           onChange={this.handleChange}
           />
         <Form.Group>

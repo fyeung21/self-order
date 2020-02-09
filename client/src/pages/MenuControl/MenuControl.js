@@ -6,7 +6,7 @@ import EditItemForm from '../../components/EditItemForm'
 import { Button, Item, Checkbox, Modal } from 'semantic-ui-react'
 import './styles.css'
 
-const MenuControl = ({item, itemTotal}) => {
+const MenuControl = ({categories, item, itemTotal}) => {
   const [ open, setOpen ] = useState(false)
   const [ activation, setActivation] = useState(item.activation)
 
@@ -43,7 +43,11 @@ const MenuControl = ({item, itemTotal}) => {
 
           <Item.Image size='tiny' src={item.imgurl} />
           <Item.Content>
-            <Item.Header as='a'>{item.name}  </Item.Header>
+            <Item.Description className="categoryName">category: {item.categoryName}</Item.Description>
+            <Item.Header as='a'>
+            {item.nameChi} <br />
+            {item.nameEng} 
+            </Item.Header>
             <Item.Meta>
               <span className='price'>${item.price}</span>
               <span className='pcs'>{item.pcs}/pcs</span>
@@ -68,7 +72,7 @@ const MenuControl = ({item, itemTotal}) => {
 
             <Button primary size="mini" content="Edit >" onClick={onEditItem}/>
               <Modal dimmer='blurring' open={open} onClose={onClose} className="addItemForm">
-                <EditItemForm item={item} closeModal={onClose}/>
+                <EditItemForm categories={categories} item={item} closeModal={onClose}/>
               </Modal>
 
           </div>

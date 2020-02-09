@@ -59,3 +59,7 @@ z .ui.toggle.checkbox.active label:hover::before {
 content.delete {
   color: white;
 }
+
+.categoryName {
+  margin-bottom: 5px;
+}

@@ -11,13 +11,20 @@ const ItemCard = ({ item }) => {
 
     return (
         <Modal dimmer='blurring' open={modalOpen} trigger={
-            <Grid.Column item={item.name}>
+            <Grid.Column item={item.nameEng}>
                 <Card fluid
                     onClick={handleOpen}>
                     <Image className="img" src={item.imgurl} />
                     <Card.Content>
-                        <div className="title">{item.name}</div>
-                        <div className="price">${item.price} / <span className="pcs">{item.pcs}pcs</span></div>
+                        <div className="div.eng-title">{item.categoryName}</div>
+                        {/* {item.nameChi == 'null' ? 0 : <div className="title">{item.nameChi}</div>} */}
+                        <div className="title">{item.nameEng}</div>
+                        {item.price == 0 ? 
+                            <div className="price">{item.pcs} pc(s) / order</div> 
+                            :
+                        <div className="price">${item.price} /
+                        <span className="pcs">{item.pcs}pc(s)</span></div> }
+                        {item.limit == 0 ? null : <span className="pcs">*Max.{item.limit} pcs per person</span>}
                     </Card.Content>
                 </Card>
             </Grid.Column>

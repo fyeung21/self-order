@@ -4,9 +4,10 @@ import { createContainer } from 'meteor/react-meteor-data'
 import { withTracker } from 'meteor/react-meteor-data';
 // import ItemCard from '../../components/ItemCard/';
 import TableNumber from '../../components/TableNumber/';
-import { Grid, Button, Item, Modal } from 'semantic-ui-react';
+import { Grid, Button, Item, Modal, MenuHeader } from 'semantic-ui-react';
 import NavBar from '../../components/NavBar/NavBar';
 import { Menu } from '/imports/api/collections/menu';
+import { Categories } from '/imports/api/collections/categories';
 import OrderId from '../../components/OrderId';
 import AddItemForm from '../../components/AddItemForm'
 import "./styles.css";
@@ -14,7 +15,7 @@ import MenuControl from './MenuControl';
 import { useHistory } from "react-router-dom";
 
 // const menuItems = require('./menu.json');
-const MenuControlContainer = ({ menu, ...props }) => {
+const MenuControlContainer = ({ categories, menu, ...props }) => {
     const itemTotal = menu.length
     console.log('length' + itemTotal)
     const [open, setOpen] = useState(false)
@@ -39,13 +40,29 @@ const MenuControlContainer = ({ menu, ...props }) => {
             </div>
             <Button className="addButton" onClick={onAddItemnModal}>Add an item +</Button>
             <Modal dimmer='blurring' open={open} onClose={onClose} className="addItemForm">
-                <AddItemForm closeModal={onClose} sortingIndex={itemTotal} />
+                <AddItemForm categories={categories} closeModal={onClose} sortingIndex={itemTotal} />
             </Modal>
             <div className="orderContent">
             </div>
             <Item.Group divided>
+                {categories.map(cat => {
+                    // let filter1 = []
+                    let filter1 = menu.filter(item=>{
+                    //     console.log(JSON.stringify("cat " + cat._id))
+                    //     console.log(JSON.stringify(item.categoryId))
+                        return (
+                            item.categoryId == cat.categoryId
+                            )
+                        })
+                    return (
+                        <div>
+                            <h2>{cat.categoryChi +  " " + cat.categoryEng}</h2>
+                            <p>{JSON.stringify(filter1)}</p>
+                        </div>
+                    )
+                })}
                 {menu.map((item) => (
-                    <MenuControl item={item} key={item.name} itemTotal={itemTotal} />
+                    <MenuControl categories={categories} item={item} key={item.name} itemTotal={itemTotal} />
                 ))}
             </ Item.Group>
             <Button onClick={onAddItemnModal}>Add an item +</Button>
@@ -62,10 +79,14 @@ const MenuControlContainer = ({ menu, ...props }) => {
 export default withTracker(() => {
     //subscribe the 'menu' collection from mongodb
     Meteor.subscribe('menu')
+    Meteor.subscribe('categories')
     const query = {};
     const options = { sort: { "sortingIndex": 1 } }; //-1 = descending sort 
     const menu = Menu.find(query, options).fetch()
+    const categories = Categories.find({}).fetch()
+
     return { //return an object
-        menu
+        menu,
+        categories
     }
 })(MenuControlContainer) //send the object to MenuConatiner as props
