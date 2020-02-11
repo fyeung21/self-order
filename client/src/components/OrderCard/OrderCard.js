@@ -72,9 +72,10 @@ const OrderCard = ({ item , onDelete }) => {
           <Item>
             <Item.Image size="small" src={item.imgurl} />
             <Item.Content>
-              <Item.Header>{item.name}</Item.Header>
+              <Item.Header>{item.nameEng}</Item.Header>
+              {item.nameChi == "" ? null : <Item.Header>{item.nameChi}</Item.Header>}
               <Item.Meta>
-                <span className='cinema'>${item.price} / {item.pcs}pcs</span>
+                {item.price == 0 ? null : <span className='cinema'>${item.price} / {item.pcs}pcs</span>}
               </Item.Meta>
               <Item.Description>qty: {item.qty}</Item.Description>
                 {item.orderTime?

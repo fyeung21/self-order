@@ -122,13 +122,15 @@ const MyOrder = ( {order} ) => {
 
             <Grid.Column floated='right' width={7}>
             {(!timedItems.time)?
-                <Button icon positive onClick={onSendToKitchen}>
-                    <Icon name="utensils"/> Send To Kitchen
+                <Button size="huge" color='orange' icon onClick={onSendToKitchen}>
+                    <Icon name="utensils"/> Send To Kitchen!
                 </Button> 
                 :
                 null
             }
-            {order[0].requestBill === 'Paid' ? 
+
+            {/* ****REQUEST BILL***** */}
+            {/* {order[0].requestBill === 'Paid' ? 
                <h3 style={{color: "green"}}>Paid, Thank you :)</h3> :
             (timedItems.time && index === 0)?
 
@@ -208,7 +210,7 @@ const MyOrder = ( {order} ) => {
               
                 :
                 null
-            }
+            } */}
             
             </Grid.Column>
 

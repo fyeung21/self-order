@@ -11,13 +11,13 @@ import OrderIdContextProvider from './src/contexts/OrderIdContextProvider';
 const App = () => {
   return (
     <BrowserRouter>
-      <Container style={{ margin: "0px 20px" }}>
+      {/* <Container style={{ margin: "0px 0px" }}> */}
         <TableContextProvider>
           <OrderIdContextProvider>
             {renderRoutes()}
           </OrderIdContextProvider>
         </TableContextProvider>
-      </Container>
+      {/* </Container> */}
     </BrowserRouter>
   )
 }

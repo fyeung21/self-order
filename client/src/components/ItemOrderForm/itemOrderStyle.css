@@ -10,11 +10,11 @@
 .qty {
   display: flex;
   flex-direction:row;
+  /* margin-bottom: 10px; */
 }
 
 .qtyNum {
   margin-top: 3px;
   margin-left: 6px;
   margin-right: 6px;
-
 }

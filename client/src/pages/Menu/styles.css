@@ -4,3 +4,16 @@
   justify-content: flex-end;
   width: 100%;
 }
+
+.ui.menu {
+  border-radius: 0px !important;
+}
+
+.sidebar{
+  overflow-y:scroll
+}
+.sideBar {
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+}
