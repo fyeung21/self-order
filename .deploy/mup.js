@@ -2,7 +2,7 @@ module.exports = {
   servers: {
     one: {
       // TODO: set host address, username, and authentication method
-      host: '159.203.43.46',
+      host: '165.227.34.202',
       username: 'root',
       pem: "~/.ssh/id_rsa",
       // password: '1390'
@@ -12,7 +12,7 @@ module.exports = {
 
   app: {
     // TODO: change app name and path
-    name: 'Tintin-dimsum',
+    name: 'letme',
     path: '../',
 
     servers: {
@@ -26,7 +26,7 @@ module.exports = {
     env: {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
-      ROOT_URL: 'http://159.203.43.46',
+      ROOT_URL: 'http://165.227.34.202',
       MONGO_URL: 'mongodb://mongodb/meteor',
       MONGO_OPLOG_URL: 'mongodb://mongodb/local',
     },
